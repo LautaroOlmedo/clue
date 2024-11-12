@@ -5,7 +5,7 @@ public class Room {
 
     }
     private String roomName;
-    private String roomTexts;
+    private String[] roomTexts;
 
 
 }

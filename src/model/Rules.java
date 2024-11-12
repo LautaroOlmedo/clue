@@ -29,6 +29,11 @@ public class Rules {
         }
         return players;
     }
+  //ToDo: createPlayers debe guardar los players en el arrayList o solo debe crearlos y otro método debe guardarlos, como llamar a ese método desde createPlayers?
+
+  /*  public void savePlayers(ArrayList<Player> players)  {
+
+    }*/
 
     public void selectPlayer(String playerName){
         Iterator<Player> iterator = players.iterator();
@@ -42,7 +47,17 @@ public class Rules {
         }
     }
 
-   /* public Impostor createImpostor(){
+    public ArrayList<Room> createRooms(){
+        return rooms;
+    }
+
+
+
+    public ArrayList<Tools> createTools(){
+        return tools;
+    }
+
+      /* public Impostor createImpostor(){
 
     }*/
 
@@ -52,13 +67,8 @@ public class Rules {
 
     public void accusePlayer(Player player){}
 
-    public ArrayList<Tools> createTools(){
-        return tools;
-    }
-
     private User user;
     private final ArrayList<Player> players = new ArrayList<>();
     private final ArrayList<Tools> tools = new ArrayList<>();
     private final ArrayList<Room> rooms = new ArrayList<>();
-
 }
