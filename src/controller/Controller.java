@@ -2,16 +2,16 @@ package controller;
 
 import model.Rules;
 import model.User;
-import view.View;
+import view.GameFrame;
 import model.Player;
 
 import java.util.ArrayList;
 
 public class Controller {
 
-    public Controller(Rules rules, View view) {
+    public Controller(Rules rules, GameFrame gameFrame) {
         this.rules = rules;
-        this.view = view;
+        this.gameFrame = gameFrame;
     }
 
    public void StartGame() throws Exception {
@@ -23,5 +23,5 @@ public class Controller {
    }
 
     private Rules rules;
-    private View view;
+    private GameFrame gameFrame;
 }
