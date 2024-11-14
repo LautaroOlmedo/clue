@@ -28,10 +28,10 @@ public class Room {
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
+    };
     private String roomName;
     private String[] roomTexts;
+    private String roomImage;
     private int ID;
 
 
