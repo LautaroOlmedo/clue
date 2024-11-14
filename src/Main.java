@@ -7,6 +7,5 @@ public class Main {
         Rules rules = new Rules();
         GameFrame gameFrame = new GameFrame();
         Controller controller = new Controller(rules, gameFrame);
-        controller.StartGame();
         }
     }

@@ -3,14 +3,19 @@ package model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Rules {
     public User createUser(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese su nombre: ");
-        user = new User(scanner.nextLine());
+        user = new User("Lautaro");
         return user;
+    }
+    public void startGame() throws Exception {
+        user = this.createUser();
+        players = this.createPlayers();
+        tools = this.createTools();
+        rooms = this.createRooms();
+        impostor = this.generateImpostor();
+        crime = this.generateCrime();
     }
 
     public ArrayList<Player> createPlayers() throws Exception {
@@ -69,8 +74,8 @@ public class Rules {
 
     public Impostor generateImpostor(){
         Player selectedPlayer = getRandomPlayer();
-        imposter = new Impostor(selectedPlayer);
-        return imposter;
+        impostor = new Impostor(selectedPlayer);
+        return impostor;
     }
 
     public static int getRandomNumber() {
@@ -119,7 +124,7 @@ public class Rules {
     }
 
     public Crime generateCrime(){
-        crime = new Crime(imposter, this.getRandomTool(), this.getRandomRoom());
+        crime = new Crime(impostor, this.getRandomTool(), this.getRandomRoom());
         return crime;
     }
 
@@ -136,15 +141,15 @@ public class Rules {
     }
 
     public boolean verifyAccusation(Player player, Room room, Tools tool){
-        return crime.getRoom().equals(room ) && crime.getTool().equals(tool) && imposter.getImposterPlayer().equals(player);
+        return crime.getRoom().equals(room ) && crime.getTool().equals(tool) && impostor.getImposterPlayer().equals(player);
     }
 
     private User user;
-    private Impostor imposter;
+    private Impostor impostor;
     private Crime crime;
-    private final ArrayList<Player> players = new ArrayList<>();
-    private final ArrayList<Tools> tools = new ArrayList<>();
-    private final ArrayList<Room> rooms = new ArrayList<>();
+    private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Tools> tools = new ArrayList<>();
+    private ArrayList<Room> rooms = new ArrayList<>();
 }
 
  /*   public void selectPlayer(String playerName){
