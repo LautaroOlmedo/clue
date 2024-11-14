@@ -4,10 +4,19 @@ import javax.swing.*;
 
 public class Player {
 
-    public Player(String name, String imageDir) throws Exception {
+    public Player(String name, String imageDir, int ID) throws Exception {
         this.playerName = name;
         this.playerImage = createImage(imageDir);
         //this.user = user;
+        this.ID = ID;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getPlayerName() {
@@ -48,5 +57,6 @@ public class Player {
     private String playerName;
     private ImageIcon playerImage;
     private User user;
+    private int ID;
 
 }
