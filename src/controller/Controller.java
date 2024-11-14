@@ -14,10 +14,10 @@ public class Controller implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(this.gameFrame.getInitialPanel())){
-
-        }else if(e.getSource().equals(this.gameFrame.getInitialPanel())){
-
+        if(e.getSource().equals(this.gameFrame.getInitialPanel().getStartButton())){
+            this.gameFrame.switchToBoard();
+        }else if(e.getSource().equals(this.gameFrame.getInitialPanel().getExitButton())){
+            System.exit(0);
         }
     }
 

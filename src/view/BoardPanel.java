@@ -3,7 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-class BoardPanel extends JPanel {
+public class BoardPanel extends JPanel {
 
 
     public BoardPanel() {

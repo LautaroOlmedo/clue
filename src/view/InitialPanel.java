@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-class InitialPanel extends JPanel {
+public class InitialPanel extends JPanel {
 
     public InitialPanel() {
         backgroundImage = new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue-videogame/src/model/images/clue-start-image.jpg").getImage();
