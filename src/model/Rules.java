@@ -34,11 +34,7 @@ public class Rules {
         }
         return players;
     }
-  //ToDo: createPlayers debe guardar los players en el arrayList o solo debe crearlos y otro método debe guardarlos, como llamar a ese método desde createPlayers?
 
-  /*  public void savePlayers(ArrayList<Player> players)  {
-
-    }*/
   public ArrayList<Tools> createTools() throws Exception{
       try {
             Tools pen = new Tools(1, "", "");
@@ -53,18 +49,23 @@ public class Rules {
 
     public ArrayList<Room> createRooms(){
         try{
-            Room securityRoom = new Room("SECURITY ROOM", 1);
-            Room comonRoom = new Room("SECURITY ROOM", 2);
-            Room laboratory = new Room("SECURITY ROOM", 3);
-            Room kitchen = new Room("SECURITY ROOM", 6);
-            Room office = new Room("SECURITY ROOM", 5);
-            Room library = new Room("SECURITY ROOM", 1);
-            rooms.add(securityRoom);
-            rooms.add(comonRoom);
-            rooms.add(laboratory);
+            Room kitchen = new Room("kitchen", 1);
+            Room diningRoom = new Room("diningRoom", 2);
+            Room balcony = new Room("balcony", 3);
+            Room masterBathroom = new Room("masterBathroom", 4);
+            Room study = new Room("study", 5);
+            Room sittingRoom = new Room("sittingRoom", 5);
+            Room basement = new Room("basement", 6);
+            Room masterBedroom = new Room("masterBedroom", 7);
             rooms.add(kitchen);
-            rooms.add(office);
-            rooms.add(library);
+            rooms.add(diningRoom);
+            rooms.add(balcony);
+            rooms.add(masterBathroom);
+            rooms.add(study);
+            rooms.add(sittingRoom);
+            rooms.add(basement);
+            rooms.add(masterBedroom);
+
         } catch (Exception e) {
             System.out.println("Failed to create rooms or load images: " + e.getMessage());
             e.printStackTrace();
@@ -78,10 +79,44 @@ public class Rules {
         return impostor;
     }
 
-    public static int getRandomNumber() {
+    private int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(3) + 1; // Genera un número entre 0 y 2, luego suma 1 para obtener entre 1 y 3
     }
+
+    public Player getPlayerByName(String name) {
+        Iterator<Player> playerIterator = players.iterator();
+        while (playerIterator.hasNext()) {
+            Player player = playerIterator.next();
+            if (player.getPlayerName().equalsIgnoreCase(name)) { // Comparación ignorando mayúsculas y minúsculas
+                return player;
+            }
+        }
+        return null; // Devuelve null si no se encuentra el jugador
+    }
+
+    public Tools getToolByName(String name) {
+        Iterator<Tools> toolsIterator = tools.iterator();
+        while (toolsIterator.hasNext()) {
+            Tools tool = toolsIterator.next();
+            if (tool.getToolName().equalsIgnoreCase(name)) {
+                return tool;
+            }
+        }
+        return null; // Devuelve null si no se encuentra la herramienta con el nombre especificado
+    }
+
+    public Room getRoomByName(String name) {
+        Iterator<Room> roomIterator = rooms.iterator();
+        while (roomIterator.hasNext()) {
+            Room room = roomIterator.next();
+            if (room.getRoomName().equalsIgnoreCase(name)) { // Comparación ignorando mayúsculas y minúsculas
+                return room;
+            }
+        }
+        return null; // Devuelve null si no se encuentra la habitación
+    }
+
 
     private Player getRandomPlayer(){
         Iterator<Player> playerIterator = players.iterator();
@@ -140,8 +175,16 @@ public class Rules {
         return verifyAccusation(player, room, tool);
     }
 
-    public boolean verifyAccusation(Player player, Room room, Tools tool){
+    private boolean verifyAccusation(Player player, Room room, Tools tool){
         return crime.getRoom().equals(room ) && crime.getTool().equals(tool) && impostor.getImposterPlayer().equals(player);
+    }
+
+    public Impostor getImpostor() {
+        return impostor;
+    }
+
+    public Crime getCrime() {
+        return crime;
     }
 
     private User user;

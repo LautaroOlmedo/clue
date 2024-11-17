@@ -16,12 +16,12 @@ public class InitialPanel extends JPanel {
         exitButton.setPreferredSize(new Dimension(100, 50));
 
         setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(-10, 0, 0, 0); // Mueve el botón "Start" hacia arriba
-        add(startButton, gbc);
+        GridBagConstraints gbcStart = new GridBagConstraints();
+        gbcStart.gridx = 0;
+        gbcStart.gridy = 0;
+        gbcStart.anchor = GridBagConstraints.CENTER;
+        gbcStart.insets = new Insets(-10, 0, 0, 0); // Mueve el botón "Start" hacia arriba
+        add(startButton, gbcStart);
 
 
         GridBagConstraints gbcExit = new GridBagConstraints();

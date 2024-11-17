@@ -3,129 +3,131 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class BoardPanel extends JPanel {
-
-    private final int TILE_SIZE = 80;
-    private final int BOARD_SIZE = 5; // Tamaño total del tablero
-
-    // Variables privadas para cada habitación
-
-
     public BoardPanel() {
+        setPreferredSize(new Dimension(500, 500)); // Ajusta el tamaño total del tablero
+
         setLayout(new GridLayout(BOARD_SIZE, BOARD_SIZE));
         createBoard();
     }
 
     private void createBoard() {
-        // Crear una matriz para organizar las habitaciones y pasillos
         String[][] board = {
-                {"Cocina", "", "Comedor", "", "Sala de Estar"},
+                {"kitchen", "", "dining-room", "", "balcony"},
                 {"", "", "", "", ""},
-                {"Biblioteca", "", "Estudio", "", "Baño"},
+                {"master-bathroom", "", "study", "", "sitting-room"},
                 {"", "", "", "", ""},
-                {"Habitación 1", "", "Habitación 2", "", "Habitación 3"}
+                {"basement", "", "master-bedroom", "", "perfilCuco"}
         };
 
-        // Añade botones al panel según la matriz
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 JButton button;
                 switch (board[i][j]) {
-                    case "Cocina" -> {
-                        kitchenButton = new JButton("KITCHEN");
-                        button = kitchenButton;
-                    }
-                    case "Comedor" -> {
-                         securityRoom= new JButton("SECURITY ROOM");
-                        button = securityRoom;
-                    }
-                    case "Sala de Estar" -> {
-                        comonRoomButton = new JButton("COMON ROOM");
-                        button = comonRoomButton;
-                    }
-                    case "Biblioteca" -> {
-                        libraryButton = new JButton("LIBRARY");
-                        button = libraryButton;
-                    }
-                    case "Estudio" -> {
-                        officeButton = new JButton("OFFICE");
-                        button = officeButton;
-                    }
-                    case "Baño" -> {
-                        terraceButton = new JButton("TERRACE");
-                        button = terraceButton;
-                    }
-                    case "Habitación 1" -> {
-                        laboratoryButton = new JButton("LABORATORY");
-                        button = laboratoryButton;
-                    }
-                    case "Habitación 2" -> {
-                        habitacion2Button = new JButton("Habitación 2");
-                        button = habitacion2Button;
-                    }
-                    case "Habitación 3" -> {
-                        habitacion3Button = new JButton("Habitación 3");
-                        button = habitacion3Button;
-                    }
-                    default -> {
-                        button = new JButton(); // Pasillos vacíos
-                    }
+                    case "kitchen" -> button = kitchenButton;
+                    case "dining-room" -> button = diningRoomButtom;
+                    case "balcony" -> button = balconyButtom;
+                    case "master-bathroom" -> button = masterBathroomButton;
+                    case "study" -> button = studyButton;
+                    case "sitting-room" -> button = sittingRoomButton;
+                    case "basement" -> button = basementButton;
+                    case "master-bedroom" -> button = masterBedroomButton;
+                    case "perfilCuco" -> button = habitacion3Button;
+                    default -> button = new JButton();
                 }
+                button.setText(board[i][j]);
+
+                button.setPreferredSize(new Dimension(200, 200));
                 button.setPreferredSize(new Dimension(TILE_SIZE, TILE_SIZE));
                 button.setBackground(board[i][j].isEmpty() ? Color.LIGHT_GRAY : new Color(200, 200, 255)); // Color claro para las habitaciones y gris para pasillos
                 button.setOpaque(true);
                 button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 add(button);
+
+                if (!board[i][j].isEmpty()) {
+                    try {
+                        // Cargar la imagen desde los recursos
+                        ImageIcon icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/test.jpeg");
+                        // Redimensionar la imagen al tamaño del botón
+                        Image scaledImage = icon.getImage().getScaledInstance(300, 200, 50);
+                        button.setIcon(new ImageIcon(scaledImage));
+
+                        // Eliminar texto y bordes para mostrar solo la imagen
+                        button.setText("");
+                        button.setBorderPainted(true);
+                        button.setFocusPainted(false);
+                       // button.setContentAreaFilled(false);
+                    } catch (Exception e) {
+                        System.err.println("No se pudo cargar la imagen para " + board[i][j]);
+                    }
+                }else{
+                    ImageIcon icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/street.jpeg");
+                    Image scaledImage = icon.getImage().getScaledInstance(300, 300, 50);
+                    button.setIcon(new ImageIcon(scaledImage));
+
+                    // Eliminar texto y bordes para mostrar solo la imagen
+                    button.setText("");
+                    button.setBorderPainted(true);
+                    button.setFocusPainted(false);
+                }
+
+                add(button);
             }
         }
     }
 
-    public JButton getKitchenButton() {
-        return kitchenButton;
+    // Métodos de acceso para los botones de las habitaciones
+    public JButton getKitchenButton() { return kitchenButton; }
+
+    public JButton getDiningRoomButton() {
+        return diningRoomButtom;
     }
 
-    public JButton getSecurityRoomButton() {
-        return this.securityRoom;
+    public JButton getBalconyButton() {
+        return balconyButtom;
     }
 
-    public JButton getComonRoomButton() {
-        return comonRoomButton;
+    public JButton getMasterBathroomButton() {
+        return masterBathroomButton;
     }
 
-    public JButton getLibraryButton() {
-        return libraryButton;
+    public JButton getStudyButton() {
+        return studyButton;
     }
 
-    public JButton getOfficeButton() {
-        return officeButton;
+    public JButton getSittingRoomButton() {
+        return sittingRoomButton;
     }
 
-    public JButton getTerraceButton() {
-        return terraceButton;
+    public JButton getBasementButton() {
+        return basementButton;
     }
 
-    public JButton getLaboratoryButton() {
-        return laboratoryButton;
+    public JButton getMasterBedroomButton() {
+        return masterBedroomButton;
     }
 
-    public JButton getHabitacion2Button() {
-        return habitacion2Button;
-    }
+    public JButton getHabitacion3Button() { return habitacion3Button; }
 
-    public JButton getHabitacion3Button() {
-        return habitacion3Button;
-    }
-
-    private JButton kitchenButton;
-    private JButton securityRoom;
-    private JButton comonRoomButton;
-    private JButton libraryButton;
-    private JButton officeButton;
-    private JButton terraceButton;
-    private JButton laboratoryButton;
-    private JButton habitacion2Button;
-    private JButton habitacion3Button;
+    private final int TILE_SIZE = 80;
+    private final int BOARD_SIZE = 5;
+    private JButton kitchenButton = new JButton();
+    private JButton diningRoomButtom = new JButton();
+    private JButton balconyButtom = new JButton();
+    private JButton masterBathroomButton = new JButton();
+    private JButton studyButton = new JButton();
+    private JButton sittingRoomButton = new JButton();
+    private JButton basementButton = new JButton();
+    private JButton masterBedroomButton = new JButton();
+    private JButton habitacion3Button = new JButton();
 }
+
+
+
+
 
 
 
