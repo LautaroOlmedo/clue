@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class InitialPanel extends JPanel {
 
     public InitialPanel() {
-        backgroundImage = new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue-videogame/src/model/images/clue-start-image.jpg").getImage();
+        backgroundImage = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/clue-start-image.jpg").getImage();
         startButton = new JButton("Start");
         startButton.setBackground(Color.DARK_GRAY);
         startButton.setPreferredSize(new Dimension(100, 50));
@@ -16,12 +16,12 @@ public class InitialPanel extends JPanel {
         exitButton.setPreferredSize(new Dimension(100, 50));
 
         setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(-10, 0, 0, 0); // Mueve el botón "Start" hacia arriba
-        add(startButton, gbc);
+        GridBagConstraints gbcStart = new GridBagConstraints();
+        gbcStart.gridx = 0;
+        gbcStart.gridy = 0;
+        gbcStart.anchor = GridBagConstraints.CENTER;
+        gbcStart.insets = new Insets(-10, 0, 0, 0); // Mueve el botón "Start" hacia arriba
+        add(startButton, gbcStart);
 
 
         GridBagConstraints gbcExit = new GridBagConstraints();

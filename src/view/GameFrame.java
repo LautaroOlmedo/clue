@@ -1,13 +1,17 @@
 package view;
 
 import javax.swing.*;
-
+import java.awt.*;
 public class GameFrame extends JFrame {
     public GameFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+        setTitle("CLUE Encuentra al asesino");
 
         initialPanel = new InitialPanel();
+        boardPanel = new BoardPanel();
+        sidePanel = new SidePanel();
+
         add(initialPanel);
 
         pack();
@@ -15,44 +19,42 @@ public class GameFrame extends JFrame {
         setVisible(true);
     }
 
-    public InitialPanel getInitialPanel() {
-        return initialPanel;
-    }
     public void switchToBoard() {
-        // Cambia el tamaño de la ventana para el tablero
-        setSize(800, 800); // Ajusta según el tamaño que desees para el tablero
+        // Configura el tamaño de la ventana
+        setSize(1800, 1000); // Ajusta el tamaño según tus necesidades
 
-        // Remueve el panel de inicio y muestra el tablero
+        // Remueve el panel inicial
         remove(initialPanel);
-        BoardPanel boardPanel = new BoardPanel();
-        add(boardPanel);
+
+        // Configura el diseño principal
+        setLayout(new BorderLayout());
+
+        // Agrega el tablero al centro y el panel lateral a la derecha
+        add(boardPanel, BorderLayout.CENTER);
+        add(sidePanel, BorderLayout.EAST);
+
+        setLocationRelativeTo(null);
         revalidate();
         repaint();
     }
+
+    public InitialPanel getInitialPanel() {
+        return initialPanel;
+    }
+
+    public BoardPanel getBoardPanel() {
+        return boardPanel;
+    }
+
+    public SidePanel getSidePanel() {
+        return sidePanel;
+    }
+
     private InitialPanel initialPanel;
+    private BoardPanel boardPanel;
+    private SidePanel sidePanel;
 }
 
 
 
-/*private void createBoard() {
-    // Nombres de las habitaciones
-    String[] rooms = {
-            "Cocina", "Comedor", "Sala de Estar", "Biblioteca", "Estudio", "Baño",
-            "Habitación 1", "Habitación 2", "Habitación 3", "Habitación 4", "Habitación 5", "Habitación 6"
-    };
 
-    // Añade los botones que representan cada habitación
-    for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
-        JButton roomButton;
-        if (i < rooms.length) {
-            roomButton = new JButton(rooms[i]);
-        } else {
-            roomButton = new JButton(""); // Casillas vacías
-        }
-        roomButton.setPreferredSize(new Dimension(TILE_SIZE, TILE_SIZE));
-        roomButton.setBackground(Color.LIGHT_GRAY);
-        roomButton.setOpaque(true);
-        roomButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        this.add(roomButton);
-    }
-}*/
