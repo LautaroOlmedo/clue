@@ -64,7 +64,12 @@ public class BoardPanel extends JPanel {
                         System.err.println("No se pudo cargar la imagen para " + board[i][j]);
                     }
                 }else{
-                    ImageIcon icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/street.jpeg");
+                    ImageIcon icon = new ImageIcon();
+                    if (i != 1 && i != 3) {
+                        icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/road.png");
+                    }else{
+                        icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/road-2.png");
+                    }
                     Image scaledImage = icon.getImage().getScaledInstance(300, 300, 50);
                     button.setIcon(new ImageIcon(scaledImage));
 
