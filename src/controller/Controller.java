@@ -57,6 +57,9 @@ public class Controller implements ActionListener {
                 this.gameFrame.getSidePanel().appendTextToFirstArea("Sala descartada...");
             }
         } else if(e.getSource().equals(this.gameFrame.getBoardPanel().getDiningRoomButton())){
+            if(e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())){
+                System.out.println("event was dispatch");
+            }
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando el comedor...");
             if(this.rules.getCrime().getRoom().equals(this.rules.getRoomByName("diningRoom"))){

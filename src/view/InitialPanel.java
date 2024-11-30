@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class InitialPanel extends JPanel {
 
     public InitialPanel() {
-        backgroundImage = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/clue-start-image.jpg").getImage();
+        backgroundImage = new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue-videogame/src/view/images/clue-start-image.jpg").getImage();
         startButton = new JButton("Start");
         startButton.setBackground(Color.DARK_GRAY);
         startButton.setPreferredSize(new Dimension(100, 50));
@@ -54,3 +54,10 @@ public class InitialPanel extends JPanel {
     private final JButton exitButton;
     private final Image backgroundImage;
 }
+
+
+// LINUX FILES DIRECTION
+// /home/lautaro/IdeaProjects/clue/src/model/images/clue-start-image.jpg
+
+// MAC FILES DIRECTION
+// /Users/lautaroolmedo/IdeaProjects/clue-videogame/src/view/images

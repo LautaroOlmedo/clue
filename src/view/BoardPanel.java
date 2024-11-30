@@ -64,7 +64,7 @@ public class BoardPanel extends JPanel {
                         System.err.println("No se pudo cargar la imagen para " + board[i][j]);
                     }
                 }else{
-                    ImageIcon icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/street.jpeg");
+                    ImageIcon icon = new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue-videogame/src/view/images/street.jpeg");
                     Image scaledImage = icon.getImage().getScaledInstance(300, 300, 50);
                     button.setIcon(new ImageIcon(scaledImage));
 
@@ -130,6 +130,6 @@ public class BoardPanel extends JPanel {
 
 
 
-
-
+// /home/lautaro/IdeaProjects/clue/src/view/images/street.jpeg
+// /Users/lautaroolmedo/IdeaProjects/clue-videogame/src/view/images/street.jpeg
 

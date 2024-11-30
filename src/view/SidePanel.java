@@ -28,6 +28,7 @@ public class SidePanel extends JPanel {
         add(accusePlayerButton, gbcAccuse);
 
         // Botón Investigate
+
         investigateButton.setBackground(Color.DARK_GRAY);
         investigateButton.setPreferredSize(new Dimension(200, 50));
         GridBagConstraints gbcInvestigate = new GridBagConstraints();

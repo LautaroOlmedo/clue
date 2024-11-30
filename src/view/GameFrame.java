@@ -21,7 +21,7 @@ public class GameFrame extends JFrame {
 
     public void switchToBoard() {
         // Configura el tamaño de la ventana
-        setSize(1800, 1000); // Ajusta el tamaño según tus necesidades
+        setSize(800, 600); // Ajusta el tamaño según tus necesidades
 
         // Remueve el panel inicial
         remove(initialPanel);

@@ -18,8 +18,12 @@ public class Room {
         return roomTexts;
     }
 
-    public void setRoomTexts(String[] roomTexts) {
-        this.roomTexts = roomTexts;
+    public void setRoomTexts(int id) {
+        String[] roomTexts = new String[10];
+        if(id == 1){
+            // BUSCAR EN UN ARCHIVO .TXT O LA EXTENSIÓN QUE SEA LOS DISTINTOS DIALOGOS PARA LA SALA CORRECTA.
+        }
+
     }
 
     public int getID() {
