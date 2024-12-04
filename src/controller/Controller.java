@@ -5,7 +5,6 @@ import view.GameFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class Controller implements ActionListener {
     public Controller(Rules rules, GameFrame gameFrame){
@@ -19,11 +18,11 @@ public class Controller implements ActionListener {
         this.gameFrame.getBoardPanel().getKitchenButton().addActionListener(this);
         this.gameFrame.getBoardPanel().getDiningRoomButton().addActionListener(this);
         this.gameFrame.getBoardPanel().getBalconyButton().addActionListener(this);
-        this.gameFrame.getBoardPanel().getMasterBathroomButton().addActionListener(this);
-        this.gameFrame.getBoardPanel().getStudyButton().addActionListener(this);
-        this.gameFrame.getBoardPanel().getSittingRoomButton().addActionListener(this);
-        this.gameFrame.getBoardPanel().getBasementButton().addActionListener(this);
-        this.gameFrame.getBoardPanel().getMasterBedroomButton().addActionListener(this);
+        this.gameFrame.getBoardPanel().getHallRoomButton().addActionListener(this);
+        this.gameFrame.getBoardPanel().getStudyRoomButton().addActionListener(this);
+        this.gameFrame.getBoardPanel().getDiningRoomButton().addActionListener(this);
+        this.gameFrame.getBoardPanel().getBillardRoomButton().addActionListener(this);
+        this.gameFrame.getBoardPanel().getLibraryRoomButton().addActionListener(this);
        // this.gameFrame.getBoardPanel().getHabitacion3Button().addActionListener(this);
 
         // ----- SIDE PANEL -----
@@ -43,8 +42,16 @@ public class Controller implements ActionListener {
             }
         }if(e.getSource().equals(this.gameFrame.getInitialPanel().getExitButton())){
             System.exit(0);
+        } if(e.getSource().equals(this.gameFrame.getSidePanel().getCluesButton())){
+            this.gameFrame.switchToCluesPanel();
         }
         if(e.getSource().equals(this.gameFrame.getBoardPanel().getKitchenButton())){
+            this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
+            if(e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())){
+
+
+            }
+
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la cocina...");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Verificando utencilios de cocina...");

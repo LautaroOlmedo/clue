@@ -1,4 +1,8 @@
 package view;
 
-public class AccusationPanel {
+import javax.swing.*;
+
+public class AccusationPanel extends JPanel {
+    public AccusationPanel() {}
+
 }

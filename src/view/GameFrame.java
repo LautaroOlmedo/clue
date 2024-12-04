@@ -1,5 +1,7 @@
 package view;
 
+import model.Clues;
+
 import javax.swing.*;
 import java.awt.*;
 public class GameFrame extends JFrame {
@@ -11,6 +13,7 @@ public class GameFrame extends JFrame {
         initialPanel = new InitialPanel();
         boardPanel = new BoardPanel();
         sidePanel = new SidePanel();
+        cluesPanel = new CluesPanel();
 
         add(initialPanel);
 
@@ -20,19 +23,23 @@ public class GameFrame extends JFrame {
     }
 
     public void switchToBoard() {
-        // Configura el tamaño de la ventana
-        setSize(1800, 1000); // Ajusta el tamaño según tus necesidades
 
-        // Remueve el panel inicial
+        setSize(1200, 800);
         remove(initialPanel);
-
-        // Configura el diseño principal
         setLayout(new BorderLayout());
 
-        // Agrega el tablero al centro y el panel lateral a la derecha
         add(boardPanel, BorderLayout.CENTER);
         add(sidePanel, BorderLayout.EAST);
 
+        setLocationRelativeTo(null);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToCluesPanel(){
+        setSize(1200, 800);
+        remove(boardPanel);
+        add(cluesPanel, BorderLayout.CENTER);
         setLocationRelativeTo(null);
         revalidate();
         repaint();
@@ -50,9 +57,14 @@ public class GameFrame extends JFrame {
         return sidePanel;
     }
 
+    public CluesPanel getCluesPanel() {
+        return cluesPanel;
+    }
+
     private InitialPanel initialPanel;
     private BoardPanel boardPanel;
     private SidePanel sidePanel;
+    CluesPanel cluesPanel;
 }
 
 

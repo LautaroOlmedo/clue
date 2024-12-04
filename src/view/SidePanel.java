@@ -28,13 +28,14 @@ public class SidePanel extends JPanel {
         add(accusePlayerButton, gbcAccuse);
 
         // Botón Investigate
-        investigateButton.setBackground(Color.DARK_GRAY);
+        investigateButton.setBackground(Color.WHITE);
         investigateButton.setPreferredSize(new Dimension(200, 50));
         GridBagConstraints gbcInvestigate = new GridBagConstraints();
         gbcInvestigate.gridx = 0;
         gbcInvestigate.gridy = 2;
         gbcInvestigate.anchor = GridBagConstraints.CENTER;
         gbcInvestigate.insets = new Insets(50, 0, 0, 0);
+        investigateButton.setEnabled(false);
         add(investigateButton, gbcInvestigate);
 
         // Primera JTextArea

@@ -12,7 +12,7 @@ public class Rules {
     public void startGame() throws Exception {
         user = this.createUser();
         players = this.createPlayers();
-        tools = this.createTools();
+        weapons = this.createWeapons();
         rooms = this.createRooms();
         impostor = this.generateImpostor();
         crime = this.generateCrime();
@@ -35,16 +35,19 @@ public class Rules {
         return players;
     }
 
-  public ArrayList<Tools> createTools() throws Exception{
+  public ArrayList<Weapon> createWeapons() throws Exception{
       try {
-            Tools pen = new Tools(1, "", "");
-            Tools VPN = new Tools(2, "", "");
-            Tools principalServer = new Tools(3, "", "");
+            Weapon candlestick = new Weapon(1, "clibre", "");
+            Weapon carvinKnife = new Weapon(2, "", "cuchillo");
+            Weapon gun = new Weapon(3, "", "arma");
+            weapons.add(candlestick);
+            weapons.add(carvinKnife);
+            weapons.add(gun);
       } catch (Exception e) {
-          System.out.println("Failed to create tools or load images: " + e.getMessage());
+          System.out.println("Failed to create weapons or load images: " + e.getMessage());
           e.printStackTrace();
       }
-      return tools;
+      return weapons;
   }
 
     public ArrayList<Room> createRooms(){
@@ -95,12 +98,12 @@ public class Rules {
         return null; // Devuelve null si no se encuentra el jugador
     }
 
-    public Tools getToolByName(String name) {
-        Iterator<Tools> toolsIterator = tools.iterator();
-        while (toolsIterator.hasNext()) {
-            Tools tool = toolsIterator.next();
-            if (tool.getToolName().equalsIgnoreCase(name)) {
-                return tool;
+    public Weapon getToolByName(String name) {
+        Iterator<Weapon> weaponsIterator = weapons.iterator();
+        while (weaponsIterator.hasNext()) {
+            Weapon weapon = weaponsIterator.next();
+            if (weapon.getWeaponName().equalsIgnoreCase(name)) {
+                return weapon;
             }
         }
         return null; // Devuelve null si no se encuentra la herramienta con el nombre especificado
@@ -132,17 +135,17 @@ public class Rules {
         return selectedPlayer; // POSIBLE NULL?
     }
 
-    private Tools getRandomTool(){
-        Iterator<Tools> toolsIterator = tools.iterator();
+    private Weapon getRandomWeapon(){
+        Iterator<Weapon> weaponsIterator = weapons.iterator();
         int random = getRandomNumber();
-        Tools selectedTool = null;
-        while(toolsIterator.hasNext()){
-            Tools tool = toolsIterator.next();
-            if(tool.getID() == random){
-                selectedTool = tool;
+        Weapon selectedWeapon = null;
+        while(weaponsIterator.hasNext()){
+            Weapon weapon = weaponsIterator.next();
+            if(weapon.getID() == random){
+                selectedWeapon = weapon;
             }
         }
-        return selectedTool;
+        return selectedWeapon;
     }
 
     private Room getRandomRoom(){
@@ -159,7 +162,7 @@ public class Rules {
     }
 
     public Crime generateCrime(){
-        crime = new Crime(impostor, this.getRandomTool(), this.getRandomRoom());
+        crime = new Crime(impostor, this.getRandomWeapon(), this.getRandomRoom());
         return crime;
     }
 
@@ -171,12 +174,12 @@ public class Rules {
         }
     }
 
-    public boolean accusePlayer(Player player, Room room, Tools tool){
-        return verifyAccusation(player, room, tool);
+    public boolean accusePlayer(Player player, Room room, Weapon weapon){
+        return verifyAccusation(player, room, weapon);
     }
 
-    private boolean verifyAccusation(Player player, Room room, Tools tool){
-        return crime.getRoom().equals(room ) && crime.getTool().equals(tool) && impostor.getImposterPlayer().equals(player);
+    private boolean verifyAccusation(Player player, Room room, Weapon weapon){
+        return crime.getRoom().equals(room ) && crime.getWeapon().equals(weapon) && impostor.getImposterPlayer().equals(player);
     }
 
     public Impostor getImpostor() {
@@ -191,7 +194,7 @@ public class Rules {
     private Impostor impostor;
     private Crime crime;
     private ArrayList<Player> players = new ArrayList<>();
-    private ArrayList<Tools> tools = new ArrayList<>();
+    private ArrayList<Weapon> weapons = new ArrayList<>();
     private ArrayList<Room> rooms = new ArrayList<>();
 }
 
