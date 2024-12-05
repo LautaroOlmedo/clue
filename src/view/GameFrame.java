@@ -26,6 +26,20 @@ public class GameFrame extends JFrame {
 
         setSize(1200, 800);
         remove(initialPanel);
+        remove(cluesPanel);
+        setLayout(new BorderLayout());
+
+        add(boardPanel, BorderLayout.CENTER);
+        add(sidePanel, BorderLayout.EAST);
+
+        setLocationRelativeTo(null);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToBoardPanel () {
+        setSize(1200, 800);
+        remove(cluesPanel);
         setLayout(new BorderLayout());
 
         add(boardPanel, BorderLayout.CENTER);
@@ -41,6 +55,7 @@ public class GameFrame extends JFrame {
         remove(boardPanel);
         add(cluesPanel, BorderLayout.CENTER);
         setLocationRelativeTo(null);
+        //this.sidePanel.getGoBackButton().setEnabled(false);
         revalidate();
         repaint();
     }

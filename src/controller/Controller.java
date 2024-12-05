@@ -29,6 +29,7 @@ public class Controller implements ActionListener {
         this.gameFrame.getSidePanel().getCluesButton().addActionListener(this);
         this.gameFrame.getSidePanel().getInvestigateButton().addActionListener(this);
         this.gameFrame.getSidePanel().getAccusePlayerButton().addActionListener(this);
+        this.gameFrame.getSidePanel().getGoBackButton().addActionListener(this);
 
     }
     @Override
@@ -42,16 +43,20 @@ public class Controller implements ActionListener {
             }
         }if(e.getSource().equals(this.gameFrame.getInitialPanel().getExitButton())){
             System.exit(0);
-        } if(e.getSource().equals(this.gameFrame.getSidePanel().getCluesButton())){
+        }if(e.getSource().equals(this.gameFrame.getSidePanel().getCluesButton())){
+            this.gameFrame.getSidePanel().getGoBackButton().setEnabled(true);
             this.gameFrame.switchToCluesPanel();
+        }if(e.getSource().equals(this.gameFrame.getSidePanel().getGoBackButton())){
+            this.gameFrame.switchToBoardPanel();
         }
+
+
         if(e.getSource().equals(this.gameFrame.getBoardPanel().getKitchenButton())){
             this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
             if(e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())){
 
 
             }
-
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la cocina...");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Verificando utencilios de cocina...");

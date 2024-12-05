@@ -38,22 +38,22 @@ public class SidePanel extends JPanel {
         investigateButton.setEnabled(false);
         add(investigateButton, gbcInvestigate);
 
-        // Primera JTextArea
-        textArea1.setLineWrap(true);
-        textArea1.setWrapStyleWord(true);
-        textArea1.setEditable(false);
-
-        // Segunda JTextArea
-        textArea2.setLineWrap(true);
-        textArea2.setWrapStyleWord(true);
-        textArea2.setEditable(false);
+        // Botón Go Back (ahora está en una fila distinta)
+        goBackButton.setBackground(Color.WHITE);
+        goBackButton.setPreferredSize(new Dimension(200, 50));
+        GridBagConstraints gbcGoBack = new GridBagConstraints();
+        gbcGoBack.gridx = 0;
+        gbcGoBack.gridy = 3; // Nueva fila
+        gbcGoBack.anchor = GridBagConstraints.CENTER;
+        gbcGoBack.insets = new Insets(50, 0, 20, 0); // Márgenes más pequeños
+        goBackButton.setEnabled(false);
+        add(goBackButton, gbcGoBack);
 
         // ScrollPane para cada JTextArea
-        JScrollPane scrollPane1 = new JScrollPane(textArea1);
         JScrollPane scrollPane2 = new JScrollPane(textArea2);
 
         // JSplitPane para dividir las JTextAreas
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, scrollPane1, scrollPane2);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, null, scrollPane2);
         splitPane.setDividerLocation(75); // Posición inicial del divisor
         splitPane.setResizeWeight(0.5); // Proporción inicial del espacio entre las áreas
         splitPane.setPreferredSize(new Dimension(250, 150));
@@ -61,15 +61,16 @@ public class SidePanel extends JPanel {
         // Configuración de GridBagConstraints para el SplitPane
         GridBagConstraints gbcSplitPane = new GridBagConstraints();
         gbcSplitPane.gridx = 0;
-        gbcSplitPane.gridy = 3;
+        gbcSplitPane.gridy = 4; // Ahora solo el SplitPane ocupa esta fila
         gbcSplitPane.fill = GridBagConstraints.BOTH;
         gbcSplitPane.weightx = 1.0;
         gbcSplitPane.weighty = 1.0;
         gbcSplitPane.insets = new Insets(50, 10, 10, 10);
         add(splitPane, gbcSplitPane);
 
+
         // Configurar tamaño del panel
-        setPreferredSize(new Dimension(300, TILE_SIZE * BOARD_SIZE));
+        setPreferredSize(new Dimension(300, 100));
     }
 
     // Métodos para agregar texto a las JTextAreas
@@ -94,6 +95,10 @@ public class SidePanel extends JPanel {
         return investigateButton;
     }
 
+    public JButton getGoBackButton() {
+        return goBackButton;
+    }
+
     public JTextArea getFirstTextArea() {
         return textArea1;
     }
@@ -107,14 +112,16 @@ public class SidePanel extends JPanel {
     private final int BOARD_SIZE = 5;
 
     // Botones para acciones
-    private JButton cluesButton = new JButton("CLUES");
-    private JButton accusePlayerButton = new JButton("ACCUSE");
-    private JButton investigateButton = new JButton("INVESTIGATE");
+    private JButton cluesButton = new JButton("PISTAS");
+    private JButton accusePlayerButton = new JButton("ACUSAR");
+    private JButton investigateButton = new JButton("INVESTIGAR");
+    private JButton goBackButton = new JButton("VOLVER");
 
     // Áreas de texto divididas
     private JTextArea textArea1 = new JTextArea();
     private JTextArea textArea2 = new JTextArea();
 }
+
 
  // ------------------
 /*public class SidePanel extends JPanel {
