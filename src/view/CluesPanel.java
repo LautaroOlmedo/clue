@@ -80,6 +80,44 @@ public class CluesPanel extends JPanel {
 
     }
 
+    public void addPlayerClue(int playerID) {
+        switch (playerID) {
+            case 1:
+                playerOneButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/gun.jpeg"));
+                break;
+            case 2:
+                playerTwoButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clue-start-image.jpg"));
+                break;
+            case 3:
+                playerThreeButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clue-start-image.jpg"));
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void addRoomClue(int roomID) {
+        switch (roomID) {
+            case 1:
+                playerOneButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/gun.jpeg"));
+                break;
+            case 2:
+                playerTwoButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clue-start-image.jpg"));
+                break;
+            case 3:
+                playerThreeButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clue-start-image.jpg"));
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            default:
+                break;
+        }
+    }
+
     private JButton playersButton;
     private JButton playerOneButton;
     private JButton playerTwoButton;

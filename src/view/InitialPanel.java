@@ -20,7 +20,7 @@ public class InitialPanel extends JPanel {
         gbcStart.gridx = 0;
         gbcStart.gridy = 0;
         gbcStart.anchor = GridBagConstraints.CENTER;
-        gbcStart.insets = new Insets(-10, 0, 0, 0); // Mueve el botón "Start" hacia arriba
+        gbcStart.insets = new Insets(-10, 0, 0, 0);
         add(startButton, gbcStart);
 
 
@@ -28,7 +28,7 @@ public class InitialPanel extends JPanel {
         gbcExit.gridx = 0;
         gbcExit.gridy = 1; // Colocar el botón "Exit" en la siguiente fila
         gbcExit.anchor = GridBagConstraints.CENTER;
-        gbcExit.insets = new Insets(10, 0, 0, 0); // Margen superior para el botón "Exit"
+        gbcExit.insets = new Insets(10, 0, 0, 0);
         add(exitButton, gbcExit);
 
         setPreferredSize(new Dimension(400, 600));
@@ -45,7 +45,6 @@ public class InitialPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // Dibujar la imagen de fondo
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }

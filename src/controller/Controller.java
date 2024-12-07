@@ -5,6 +5,7 @@ import view.GameFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Controller implements ActionListener {
     public Controller(Rules rules, GameFrame gameFrame){
@@ -16,14 +17,17 @@ public class Controller implements ActionListener {
 
         // ----- BOARD PANEL -----
         this.gameFrame.getBoardPanel().getKitchenButton().addActionListener(this);
-        this.gameFrame.getBoardPanel().getDiningRoomButton().addActionListener(this);
-        this.gameFrame.getBoardPanel().getBalconyButton().addActionListener(this);
+        this.gameFrame.getBoardPanel().getBallRoomButton().addActionListener(this);
+        this.gameFrame.getBoardPanel().getLoungeRoomButton().addActionListener(this);
         this.gameFrame.getBoardPanel().getHallRoomButton().addActionListener(this);
         this.gameFrame.getBoardPanel().getStudyRoomButton().addActionListener(this);
         this.gameFrame.getBoardPanel().getDiningRoomButton().addActionListener(this);
         this.gameFrame.getBoardPanel().getBillardRoomButton().addActionListener(this);
         this.gameFrame.getBoardPanel().getLibraryRoomButton().addActionListener(this);
-       // this.gameFrame.getBoardPanel().getHabitacion3Button().addActionListener(this);
+        this.gameFrame.getBoardPanel().getBallRoomButtom().addActionListener(this);
+        this.gameFrame.getBoardPanel().getConservatoryButton().addActionListener(this);
+        this.gameFrame.getBoardPanel().getLoungeRoomButtom().addActionListener(this);
+
 
         // ----- SIDE PANEL -----
         this.gameFrame.getSidePanel().getCluesButton().addActionListener(this);
@@ -34,6 +38,7 @@ public class Controller implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(false);
         if(e.getSource().equals(this.gameFrame.getInitialPanel().getStartButton())){
             this.gameFrame.switchToBoard();
             try {
@@ -48,15 +53,23 @@ public class Controller implements ActionListener {
             this.gameFrame.switchToCluesPanel();
         }if(e.getSource().equals(this.gameFrame.getSidePanel().getGoBackButton())){
             this.gameFrame.switchToBoardPanel();
+        } if(e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())){
+            switch (this.getRandomNumberBetBetweenOneAndTwo()){
+                case 1:
+                    Player player = this.rules.getInocentPlayer();
+                    this.rules.addPlayerClue(player);
+                    this.gameFrame.getCluesPanel().addPlayerClue(player.getID());
+                    break;
+                case 2:
+                   Room room = this.rules.getInocentRoom();
+                    this.rules.addRoomClue(room);
+                    this.gameFrame.getCluesPanel().addRoomClue(room.getID());
+            }
         }
-
 
         if(e.getSource().equals(this.gameFrame.getBoardPanel().getKitchenButton())){
             this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
-            if(e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())){
 
-
-            }
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la cocina...");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Verificando utencilios de cocina...");
@@ -68,7 +81,7 @@ public class Controller implements ActionListener {
                 this.gameFrame.getSidePanel().appendTextToFirstArea("No se encontraron anomalias..");
                 this.gameFrame.getSidePanel().appendTextToFirstArea("Sala descartada...");
             }
-        } else if(e.getSource().equals(this.gameFrame.getBoardPanel().getDiningRoomButton())){
+        } else if(e.getSource().equals(this.gameFrame.getBoardPanel().getBallRoomButton())){
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando el comedor...");
             if(this.rules.getCrime().getRoom().equals(this.rules.getRoomByName("diningRoom"))){
@@ -79,7 +92,7 @@ public class Controller implements ActionListener {
                 this.gameFrame.getSidePanel().appendTextToFirstArea("No se encontraron anomalias..");
                 this.gameFrame.getSidePanel().appendTextToFirstArea("Sala descartada...");
             }
-        }else if(e.getSource().equals(this.gameFrame.getBoardPanel().getBalconyButton())){
+        }else if(e.getSource().equals(this.gameFrame.getBoardPanel().getLoungeRoomButton())){
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la terraza...");
 
@@ -95,6 +108,10 @@ public class Controller implements ActionListener {
         }
     }
 
+    private int getRandomNumberBetBetweenOneAndTwo() {
+        Random random = new Random();
+        return random.nextInt(2) + 1;
+    }
 
     private Rules rules;
     private GameFrame gameFrame;

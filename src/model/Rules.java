@@ -39,7 +39,7 @@ public class Rules {
       try {
             Weapon candlestick = new Weapon(1, "clibre", "");
             Weapon carvinKnife = new Weapon(2, "", "cuchillo");
-            Weapon gun = new Weapon(3, "", "arma");
+            Weapon gun = new Weapon(3, "", "pistola");
             weapons.add(candlestick);
             weapons.add(carvinKnife);
             weapons.add(gun);
@@ -87,6 +87,11 @@ public class Rules {
         return random.nextInt(3) + 1; // Genera un número entre 0 y 2, luego suma 1 para obtener entre 1 y 3
     }
 
+    private int getRandomNumberBetweenOneAndSix() {
+        Random random = new Random();
+        return random.nextInt(6) + 1; // Genera un número entre 0 y 2, luego suma 1 para obtener entre 1 y 3
+    }
+
     public Player getPlayerByName(String name) {
         Iterator<Player> playerIterator = players.iterator();
         while (playerIterator.hasNext()) {
@@ -98,7 +103,7 @@ public class Rules {
         return null; // Devuelve null si no se encuentra el jugador
     }
 
-    public Weapon getToolByName(String name) {
+    public Weapon geWeaponByName(String name) {
         Iterator<Weapon> weaponsIterator = weapons.iterator();
         while (weaponsIterator.hasNext()) {
             Weapon weapon = weaponsIterator.next();
@@ -130,12 +135,27 @@ public class Rules {
             Player player = playerIterator.next();
             if(player.getID() == random){
                 selectedPlayer = player;
+
             }
         }
         return selectedPlayer; // POSIBLE NULL?
     }
 
-    private Weapon getRandomWeapon(){
+    public Player getInocentPlayer(){
+        Iterator<Player> playerIterator = players.iterator();
+        int random = getRandomNumber();
+        Player selectedPlayer = null;
+        while(playerIterator.hasNext() && selectedPlayer == null){
+            Player player = playerIterator.next();
+            if(player.getID() == random && player.getID() != impostor.getPlayer().getID()){
+                selectedPlayer = player;
+                //players.remove(selectedPlayer);
+            }
+        }
+        return selectedPlayer;
+    }
+
+    public Weapon getRandomWeapon(){
         Iterator<Weapon> weaponsIterator = weapons.iterator();
         int random = getRandomNumber();
         Weapon selectedWeapon = null;
@@ -148,11 +168,37 @@ public class Rules {
         return selectedWeapon;
     }
 
-    private Room getRandomRoom(){
-        Iterator<Room> roomIterator = rooms.iterator();
+    public Weapon getInocentWeapon(){
+        Iterator<Weapon> weaponsIterator = weapons.iterator();
         int random = getRandomNumber();
+        Weapon selectedWeapon = null;
+        while(weaponsIterator.hasNext()){
+            Weapon weapon = weaponsIterator.next();
+            if(weapon.getID() == random){
+                selectedWeapon = weapon;
+            }
+        }
+        return selectedWeapon;
+    }
+
+    public Room getRandomRoom(){
+        Iterator<Room> roomIterator = rooms.iterator();
+        int random = getRandomNumberBetweenOneAndSix();
         Room selectedRoom = null;
         while(roomIterator.hasNext()){
+            Room room = roomIterator.next();
+            if(room.getID() == random){
+                selectedRoom = room;
+            }
+        }
+        return selectedRoom;
+    }
+
+    public Room getInocentRoom(){
+        Iterator<Room> roomIterator = rooms.iterator();
+        int random = getRandomNumberBetweenOneAndSix();
+        Room selectedRoom = null;
+        while(roomIterator.hasNext() && selectedRoom == null){
             Room room = roomIterator.next();
             if(room.getID() == random){
                 selectedRoom = room;
@@ -174,12 +220,39 @@ public class Rules {
         }
     }
 
+/*    public void addRandomClue(){
+        int random = this.getRandomNumber();
+        switch(random){
+            case 1:
+                this.addPlayerClue(getInocentPlayer());
+                break;
+            case 2:
+                this.addWeaponClue(this.getInocentWeapon());
+                break;
+            case 3:
+                this.addRoomClue(this.getInocentRoom());
+                break;
+            default:
+                break;
+        }
+    }*/
+
+    public void addPlayerClue(Player player){
+        this.clues.addPlayerClue(player);
+    }
+    public void addWeaponClue(Weapon weapon){
+        this.clues.addWeaponClue(weapon);
+    }
+    public void addRoomClue(Room room){
+        this.clues.addRoomClue(room);
+    }
+
     public boolean accusePlayer(Player player, Room room, Weapon weapon){
-        return verifyAccusation(player, room, weapon);
+        return this.verifyAccusation(player, room, weapon);
     }
 
     private boolean verifyAccusation(Player player, Room room, Weapon weapon){
-        return crime.getRoom().equals(room ) && crime.getWeapon().equals(weapon) && impostor.getImposterPlayer().equals(player);
+        return crime.getRoom().equals(room) && crime.getWeapon().equals(weapon) && impostor.getPlayer().equals(player);
     }
 
     public Impostor getImpostor() {
@@ -196,6 +269,7 @@ public class Rules {
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Weapon> weapons = new ArrayList<>();
     private ArrayList<Room> rooms = new ArrayList<>();
+    private Clue clues = new Clue();
 }
 
  /*   public void selectPlayer(String playerName){

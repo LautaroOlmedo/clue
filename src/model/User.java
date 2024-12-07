@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Queue;
-
 public class User {
     public User(String userName){
         this.userName = userName;
@@ -10,5 +8,5 @@ public class User {
         return userName;
     }
     private String userName;
-    private Clues clues;
+    private Clue clue;
 }

@@ -1,7 +1,5 @@
 package view;
 
-import model.Clues;
-
 import javax.swing.*;
 import java.awt.*;
 public class GameFrame extends JFrame {
@@ -44,7 +42,7 @@ public class GameFrame extends JFrame {
 
         add(boardPanel, BorderLayout.CENTER);
         add(sidePanel, BorderLayout.EAST);
-
+        this.sidePanel.getGoBackButton().setEnabled(false);
         setLocationRelativeTo(null);
         revalidate();
         repaint();

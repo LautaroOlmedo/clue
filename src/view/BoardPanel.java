@@ -86,11 +86,11 @@ public class BoardPanel extends JPanel {
     // Métodos de acceso para los botones de las habitaciones
     public JButton getKitchenButton() { return kitchenButton; }
 
-    public JButton getDiningRoomButton() {
+    public JButton getBallRoomButton() {
         return ballRoomButtom;
     }
 
-    public JButton getBalconyButton() {
+    public JButton getLoungeRoomButton() {
         return loungeRoomButtom;
     }
 
@@ -111,6 +111,17 @@ public class BoardPanel extends JPanel {
     }
     public JButton getConservatoryButton() { return conservatoryButton; }
 
+    public JButton getBallRoomButtom() {
+        return ballRoomButtom;
+    }
+
+    public JButton getLoungeRoomButtom() {
+        return loungeRoomButtom;
+    }
+
+    public JButton getDiningRoomButton() {
+        return diningRoomButton;
+    }
 
     private JButton kitchenButton;
     private JButton ballRoomButtom;
