@@ -34,11 +34,12 @@ public class Controller implements ActionListener {
         this.gameFrame.getSidePanel().getInvestigateButton().addActionListener(this);
         this.gameFrame.getSidePanel().getAccusePlayerButton().addActionListener(this);
         this.gameFrame.getSidePanel().getGoBackButton().addActionListener(this);
+        this.gameFrame.getSidePanel().getNextPageButton().addActionListener(this);
 
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(false);
+
         if(e.getSource().equals(this.gameFrame.getInitialPanel().getStartButton())){
             this.gameFrame.switchToBoard();
             try {
@@ -46,72 +47,103 @@ public class Controller implements ActionListener {
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
-        }if(e.getSource().equals(this.gameFrame.getInitialPanel().getExitButton())){
+        }
+        if(e.getSource().equals(this.gameFrame.getInitialPanel().getExitButton())){
             System.exit(0);
-        }if(e.getSource().equals(this.gameFrame.getSidePanel().getCluesButton())){
+        }
+
+       this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(false);
+        if (this.rules.getCluePage() >= 2) {
+            this.gameFrame.getSidePanel().getNextPageButton().setEnabled(false);
+        }
+
+        if(e.getSource().equals(this.gameFrame.getSidePanel().getCluesButton())){ // VER PISTAS
             this.gameFrame.getSidePanel().getGoBackButton().setEnabled(true);
-            this.gameFrame.switchToCluesPanel();
-        }if(e.getSource().equals(this.gameFrame.getSidePanel().getGoBackButton())){
-            this.gameFrame.switchToBoardPanel();
-        } if(e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())){
-            switch (this.getRandomNumberBetBetweenOneAndTwo()){
-                case 1:
-                    Player player = this.rules.getInocentPlayer();
-                    this.rules.addPlayerClue(player);
-                    this.gameFrame.getCluesPanel().addPlayerClue(player.getID());
-                    break;
-                case 2:
-                   Room room = this.rules.getInocentRoom();
-                    this.rules.addRoomClue(room);
-                    this.gameFrame.getCluesPanel().addRoomClue(room.getID());
+            if (this.rules.getCluePage() < 4) {
+                this.gameFrame.getSidePanel().getNextPageButton().setEnabled(true);
             }
+            this.gameFrame.switchToCluesPanel(this.rules.getCluePage());
+        }
+        if(e.getSource().equals(this.gameFrame.getSidePanel().getGoBackButton())){ // VOLVER AL PANEL
+            this.gameFrame.getSidePanel().getNextPageButton().setEnabled(false);
+            this.rules.resetCluePage();
+            this.gameFrame.switchToBoardPanel();
+        }
+        if (e.getSource().equals(this.gameFrame.getSidePanel().getNextPageButton())) { // VER SIGUIENTE PAGINA DE PISTAS
+            this.rules.sumCluePage();
+            this.gameFrame.switchToCluesPanel(this.rules.getCluePage());
+        }
+        if (e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())) {
+            boolean addedClue = false;
+
+            do {
+                int randomNumber = this.rules.getRandomNumberBetBetweenOneAndFour();
+                //System.out.println("randomNumber: " + randomNumber);
+
+                switch (randomNumber) {
+                    case 1: // Agregar pista de jugador
+                        if (this.rules.getPlayersAllowed() > 1) {
+                            Player player = this.rules.getInocentPlayer();
+                            if (player == null){
+                                break;
+                            }
+                            System.out.println("deberia agregar a un player: " + player.getPlayerName());
+                            this.rules.addPlayerClue(player);
+                            this.gameFrame.getPlayersCluesPanel().addPlayerClue(player.getPlayerImage());
+                            addedClue = true;
+                        }
+                        break;
+                    case 2: // Agregar pista de arma
+                        if (this.rules.getWeaponsAllowed() > 1) {
+                            Weapon weapon = this.rules.getInocentWeapon();
+                            if (weapon == null){
+                                break;
+                            }
+                            System.out.println("deberia agregar a un arma: " + weapon.getWeaponName() + weapon.getWeaponImage());
+                            this.rules.addWeaponClue(weapon);
+                            this.gameFrame.getWeaponsCluesPanel().addWeaponClue(weapon.getWeaponImage());
+                            addedClue = true;
+                        }
+                        break;
+                    case 3, 4:
+                        if (this.rules.getRoomsAllowed() > 1) {
+                            Room room = this.rules.getInocentRoom();
+                            if (room == null){
+                                break;
+                            }
+                            System.out.println("deberia agregar a una habitacion: " + room.getRoomName());
+                            this.rules.addRoomClue(room);
+                            this.gameFrame.getRoomsCluePanel().addRoomClue(room.getRoomImage());
+                            addedClue = true;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            } while (!addedClue);
         }
 
         if(e.getSource().equals(this.gameFrame.getBoardPanel().getKitchenButton())){
-            this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
-
+            if(this.rules.validateAllowedClues()){
+                this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
+            }
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la cocina...");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Verificando utencilios de cocina...");
-            if(this.rules.getCrime().getRoom().equals(this.rules.getRoomByName("kitchen"))){
-                this.gameFrame.getSidePanel().getFirstTextArea().setText("Extrano..");
-                this.gameFrame.getSidePanel().getFirstTextArea().setText("La noche anterior se cocino para mas de una persona. No es que el duque cenaba en soledad?...");
-                this.gameFrame.getSidePanel().getFirstTextArea().setText("Mmhhh..");
-            }else{
-                this.gameFrame.getSidePanel().appendTextToFirstArea("No se encontraron anomalias..");
-                this.gameFrame.getSidePanel().appendTextToFirstArea("Sala descartada...");
-            }
-        } else if(e.getSource().equals(this.gameFrame.getBoardPanel().getBallRoomButton())){
-            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
-            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando el comedor...");
-            if(this.rules.getCrime().getRoom().equals(this.rules.getRoomByName("diningRoom"))){
-                this.gameFrame.getSidePanel().getFirstTextArea().setText("Algo no va bien..");
-                this.gameFrame.getSidePanel().getFirstTextArea().setText("Se utilizo mas de una silla durante la cena..");
-                this.gameFrame.getSidePanel().getFirstTextArea().setText("La ventana esta abierta. Habran escapado por ahi?..");
-            }else{
-                this.gameFrame.getSidePanel().appendTextToFirstArea("No se encontraron anomalias..");
-                this.gameFrame.getSidePanel().appendTextToFirstArea("Sala descartada...");
-            }
-        }else if(e.getSource().equals(this.gameFrame.getBoardPanel().getLoungeRoomButton())){
-            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
-            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la terraza...");
 
-            if(this.rules.getCrime().getRoom().equals(this.rules.getRoomByName("balcony"))){
-                this.gameFrame.getSidePanel().getFirstTextArea().setText("Algo no va bien..");
-                this.gameFrame.getSidePanel().appendTextToFirstArea("Hay huellas de mas de una persona..");
-                this.gameFrame.getSidePanel().appendTextToFirstArea("LA CORTINA TIENE SANGRE..");
+        }else if(e.getSource().equals(this.gameFrame.getBoardPanel().getDiningRoomButton())){
+            this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
 
-            }else{
-                this.gameFrame.getSidePanel().appendTextToFirstArea("No se encontraron anomalias..");
-                this.gameFrame.getSidePanel().appendTextToFirstArea("Sala descartada...");
-            }
         }
     }
 
-    private int getRandomNumberBetBetweenOneAndTwo() {
+
+
+    private int getRandomNumberBetBetweenOneAndFour() {
         Random random = new Random();
-        return random.nextInt(2) + 1;
+        return random.nextInt(3) + 1;
     }
+
 
     private Rules rules;
     private GameFrame gameFrame;

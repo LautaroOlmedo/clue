@@ -6,7 +6,7 @@ public class Weapon {
     public Weapon(int ID, String weaponName, String weaponImageDir) throws Exception {
         this.ID = ID;
         this.weaponName = weaponName;
-        this.weaponImage = createImage(weaponName);
+        this.weaponImage = createImage(weaponImageDir);
     }
 
     public int getID() {
@@ -25,7 +25,7 @@ public class Weapon {
         this.weaponName = weaponName;
     }
 
-    public ImageIcon getWeaponImageImage() {
+    public ImageIcon getWeaponImage() {
         return weaponImage;
     }
 

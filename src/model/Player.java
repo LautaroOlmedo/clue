@@ -4,11 +4,11 @@ import javax.swing.*;
 
 public class Player {
 
-    public Player(String name, String imageDir, int ID) throws Exception {
+    public Player(int ID, String name, String imageDir) throws Exception {
+        this.ID = ID;
         this.playerName = name;
         this.playerImage = createImage(imageDir);
         //this.user = user;
-        this.ID = ID;
     }
 
     public int getID() {

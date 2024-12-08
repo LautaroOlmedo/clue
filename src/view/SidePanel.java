@@ -9,68 +9,74 @@ public class SidePanel extends JPanel {
 
         // Botón Clues
         cluesButton.setBackground(Color.DARK_GRAY);
-        cluesButton.setPreferredSize(new Dimension(200, 50));
+        cluesButton.setPreferredSize(new Dimension(200, 40));
         GridBagConstraints gbcClues = new GridBagConstraints();
         gbcClues.gridx = 0;
-        gbcClues.gridy = 0;
+        gbcClues.gridy = 0; // Primera fila
         gbcClues.anchor = GridBagConstraints.CENTER;
-        gbcClues.insets = new Insets(50, 0, 0, 0);
+        gbcClues.insets = new Insets(10, 0, 10, 0); // Márgenes
         add(cluesButton, gbcClues);
 
         // Botón Accuse
         accusePlayerButton.setBackground(Color.DARK_GRAY);
-        accusePlayerButton.setPreferredSize(new Dimension(200, 50));
+        accusePlayerButton.setPreferredSize(new Dimension(200, 40));
         GridBagConstraints gbcAccuse = new GridBagConstraints();
         gbcAccuse.gridx = 0;
-        gbcAccuse.gridy = 1;
+        gbcAccuse.gridy = 1; // Segunda fila
         gbcAccuse.anchor = GridBagConstraints.CENTER;
-        gbcAccuse.insets = new Insets(50, 0, 0, 0);
+        gbcAccuse.insets = new Insets(10, 0, 10, 0); // Márgenes
         add(accusePlayerButton, gbcAccuse);
 
         // Botón Investigate
         investigateButton.setBackground(Color.WHITE);
-        investigateButton.setPreferredSize(new Dimension(200, 50));
+        investigateButton.setPreferredSize(new Dimension(200, 40));
         GridBagConstraints gbcInvestigate = new GridBagConstraints();
         gbcInvestigate.gridx = 0;
-        gbcInvestigate.gridy = 2;
+        gbcInvestigate.gridy = 2; // Tercera fila
         gbcInvestigate.anchor = GridBagConstraints.CENTER;
-        gbcInvestigate.insets = new Insets(50, 0, 0, 0);
+        gbcInvestigate.insets = new Insets(10, 0, 10, 0); // Márgenes
         investigateButton.setEnabled(false);
         add(investigateButton, gbcInvestigate);
 
-        // Botón Go Back (ahora está en una fila distinta)
+        // Botón Go Back
         goBackButton.setBackground(Color.WHITE);
-        goBackButton.setPreferredSize(new Dimension(200, 50));
+        goBackButton.setPreferredSize(new Dimension(200, 40));
         GridBagConstraints gbcGoBack = new GridBagConstraints();
         gbcGoBack.gridx = 0;
-        gbcGoBack.gridy = 3; // Nueva fila
+        gbcGoBack.gridy = 3; // Cuarta fila
         gbcGoBack.anchor = GridBagConstraints.CENTER;
-        gbcGoBack.insets = new Insets(50, 0, 20, 0); // Márgenes más pequeños
+        gbcGoBack.insets = new Insets(10, 0, 10, 0); // Márgenes
         goBackButton.setEnabled(false);
         add(goBackButton, gbcGoBack);
 
-        // ScrollPane para cada JTextArea
-        JScrollPane scrollPane2 = new JScrollPane(textArea2);
+        // Botón Next Page
+        nextPageButton.setBackground(Color.WHITE);
+        nextPageButton.setPreferredSize(new Dimension(200, 40));
+        GridBagConstraints gbcNextPage = new GridBagConstraints();
+        gbcNextPage.gridx = 0;
+        gbcNextPage.gridy = 4; // Quinta fila
+        gbcNextPage.anchor = GridBagConstraints.CENTER;
+        gbcNextPage.insets = new Insets(10, 0, 10, 0); // Márgenes
+        nextPageButton.setEnabled(false);
+        add(nextPageButton, gbcNextPage);
 
-        // JSplitPane para dividir las JTextAreas
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, null, scrollPane2);
-        splitPane.setDividerLocation(75); // Posición inicial del divisor
-        splitPane.setResizeWeight(0.5); // Proporción inicial del espacio entre las áreas
-        splitPane.setPreferredSize(new Dimension(250, 150));
+        // Primera JTextArea con ScrollPane
+        textArea1.setLineWrap(true);
+        textArea1.setWrapStyleWord(true);
+        textArea1.setEditable(false);
+        JScrollPane scrollPane1 = new JScrollPane(textArea1);
 
-        // Configuración de GridBagConstraints para el SplitPane
-        GridBagConstraints gbcSplitPane = new GridBagConstraints();
-        gbcSplitPane.gridx = 0;
-        gbcSplitPane.gridy = 4; // Ahora solo el SplitPane ocupa esta fila
-        gbcSplitPane.fill = GridBagConstraints.BOTH;
-        gbcSplitPane.weightx = 1.0;
-        gbcSplitPane.weighty = 1.0;
-        gbcSplitPane.insets = new Insets(50, 10, 10, 10);
-        add(splitPane, gbcSplitPane);
-
+        GridBagConstraints gbcScrollPane = new GridBagConstraints();
+        gbcScrollPane.gridx = 0;
+        gbcScrollPane.gridy = 5; // Sexta fila
+        gbcScrollPane.fill = GridBagConstraints.BOTH;
+        gbcScrollPane.weightx = 1.0;
+        gbcScrollPane.weighty = 1.0;
+        gbcScrollPane.insets = new Insets(10, 10, 10, 10); // Márgenes
+        add(scrollPane1, gbcScrollPane);
 
         // Configurar tamaño del panel
-        setPreferredSize(new Dimension(300, 100));
+        setPreferredSize(new Dimension(300, TILE_SIZE * BOARD_SIZE));
     }
 
     // Métodos para agregar texto a las JTextAreas
@@ -103,8 +109,8 @@ public class SidePanel extends JPanel {
         return textArea1;
     }
 
-    public JTextArea getSecondTextArea() {
-        return textArea2;
+    public JButton getNextPageButton() {
+        return nextPageButton;
     }
 
     // Variables tamaño del tablero
@@ -120,6 +126,8 @@ public class SidePanel extends JPanel {
     // Áreas de texto divididas
     private JTextArea textArea1 = new JTextArea();
     private JTextArea textArea2 = new JTextArea();
+
+    private JButton nextPageButton = new JButton("SIGUIENTE");
 }
 
 

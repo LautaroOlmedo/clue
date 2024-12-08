@@ -6,7 +6,7 @@ import java.awt.*;
 public class BoardPanel extends JPanel {
     public BoardPanel() {
         this.setLayout(null);
-        this.fondo = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/fondo.jpg").getImage();
+        this.fondo = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/fondo.png").getImage();
         this.createBoard();
     }
     @Override

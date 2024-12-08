@@ -1,25 +1,30 @@
 package model;
 
+import javax.swing.*;
+
 public class Room {
-    public Room(String name, int id) {
+    public Room(int ID, String name, String imageDir) throws Exception {
+        this.ID = ID;
         this.roomName = name;
-        this.ID = id;
+        this.roomImage = createImage(imageDir);
+    }
+
+    public ImageIcon createImage(String image) throws Exception{
+        try {
+            this.roomImage = new ImageIcon(image);
+        } catch (Exception e) {
+            System.out.println("Failed to load image: " + image);
+            throw e;
+        }
+        return this.roomImage;
     }
 
     public String getRoomName() {
         return roomName;
     }
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-
-    public String[] getRoomTexts() {
-        return roomTexts;
-    }
-
-    public void setRoomTexts(String[] roomTexts) {
-        this.roomTexts = roomTexts;
+    public ImageIcon getRoomImage() {
+        return roomImage;
     }
 
     public int getID() {
@@ -30,8 +35,8 @@ public class Room {
         this.ID = ID;
     };
     private String roomName;
-    private String[] roomTexts;
-    private String roomImage;
+
+    private ImageIcon roomImage;
     private int ID;
 
 

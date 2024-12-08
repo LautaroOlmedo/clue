@@ -11,7 +11,9 @@ public class GameFrame extends JFrame {
         initialPanel = new InitialPanel();
         boardPanel = new BoardPanel();
         sidePanel = new SidePanel();
-        cluesPanel = new CluesPanel();
+        playersCluesPanel = new PlayersCluesPanel();
+        weaponsCluesPanel = new WeaponsCluesPanel();
+        roomsCluePanel = new RoomsCluePanel();
 
         add(initialPanel);
 
@@ -21,10 +23,8 @@ public class GameFrame extends JFrame {
     }
 
     public void switchToBoard() {
-
         setSize(1200, 800);
         remove(initialPanel);
-        remove(cluesPanel);
         setLayout(new BorderLayout());
 
         add(boardPanel, BorderLayout.CENTER);
@@ -37,7 +37,10 @@ public class GameFrame extends JFrame {
 
     public void switchToBoardPanel () {
         setSize(1200, 800);
-        remove(cluesPanel);
+        remove(playersCluesPanel);
+        remove(weaponsCluesPanel);
+        remove(roomsCluePanel);
+        //remove accusationPanel
         setLayout(new BorderLayout());
 
         add(boardPanel, BorderLayout.CENTER);
@@ -48,10 +51,41 @@ public class GameFrame extends JFrame {
         repaint();
     }
 
-    public void switchToCluesPanel(){
+    public void switchToCluesPanel(int numPage){
+       if(numPage == 1){
+           this.switchToPlayersCluesPanel();
+       }else if(numPage == 2){
+           this.switchToWeaponsCluesPanel();
+       }else if(numPage == 3){
+           this.switchToRoomsCluesPanel();
+       }
+    }
+
+    public void switchToPlayersCluesPanel(){
         setSize(1200, 800);
         remove(boardPanel);
-        add(cluesPanel, BorderLayout.CENTER);
+        add(playersCluesPanel, BorderLayout.CENTER);
+        setLocationRelativeTo(null);
+        //this.sidePanel.getGoBackButton().setEnabled(false);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToWeaponsCluesPanel(){
+        setSize(1200, 800);
+        remove(playersCluesPanel);
+        add(weaponsCluesPanel, BorderLayout.CENTER);
+        setLocationRelativeTo(null);
+        //this.sidePanel.getGoBackButton().setEnabled(false);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToRoomsCluesPanel(){
+        setSize(1200, 800);
+        remove(playersCluesPanel);
+        remove(weaponsCluesPanel);
+        add(roomsCluePanel, BorderLayout.CENTER);
         setLocationRelativeTo(null);
         //this.sidePanel.getGoBackButton().setEnabled(false);
         revalidate();
@@ -70,14 +104,26 @@ public class GameFrame extends JFrame {
         return sidePanel;
     }
 
-    public CluesPanel getCluesPanel() {
-        return cluesPanel;
+
+
+    public PlayersCluesPanel getPlayersCluesPanel() {
+        return playersCluesPanel;
+    }
+
+    public WeaponsCluesPanel getWeaponsCluesPanel() {
+        return weaponsCluesPanel;
+    }
+
+    public RoomsCluePanel getRoomsCluePanel() {
+        return roomsCluePanel;
     }
 
     private InitialPanel initialPanel;
     private BoardPanel boardPanel;
     private SidePanel sidePanel;
-    CluesPanel cluesPanel;
+    PlayersCluesPanel playersCluesPanel;
+    WeaponsCluesPanel weaponsCluesPanel;
+    RoomsCluePanel roomsCluePanel;
 }
 
 
