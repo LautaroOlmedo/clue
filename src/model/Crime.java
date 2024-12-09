@@ -1,9 +1,9 @@
 package model;
 
 public class Crime {
-    public Crime(Impostor impostor, Tools tool, Room room) {
+    public Crime(Impostor impostor, Weapon weapon, Room room) {
         this.impostor = impostor;
-        this.tool = tool;
+        this.weapon = weapon;
         this.room = room;
     }
 
@@ -23,15 +23,15 @@ public class Crime {
         this.room = room;
     }
 
-    public Tools getTool() {
-        return tool;
+    public Weapon getWeapon() {
+        return weapon;
     }
 
-    public void setTool(Tools tool) {
-        this.tool = tool;
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
     private Impostor impostor;
     private Room room;
-    private Tools tool;
+    private Weapon weapon;
 }

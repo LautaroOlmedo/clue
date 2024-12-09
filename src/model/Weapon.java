@@ -2,12 +2,11 @@ package model;
 
 import javax.swing.*;
 
-public class Player {
-
-    public Player(int ID, String name, String imageDir) throws Exception {
+public class Weapon {
+    public Weapon(int ID, String weaponName, String weaponImageDir) throws Exception {
         this.ID = ID;
-        this.playerName = name;
-        this.playerImage = createImage(imageDir);
+        this.weaponName = weaponName;
+        this.weaponImage = createImage(weaponImageDir);
         this.clueAdded = false;
     }
 
@@ -24,27 +23,25 @@ public class Player {
     }
 
 
-    public ImageIcon getPlayerImage() {
-        return playerImage;
-    }
 
+    public ImageIcon getWeaponImage() {
+        return weaponImage;
+    }
 
 
 
     public ImageIcon createImage(String image) throws Exception{
         try {
-            this.playerImage = new ImageIcon(image);
+            this.weaponImage = new ImageIcon(image);
         } catch (Exception e) {
             System.out.println("Failed to load image: " + image);
             throw e;
         }
-        return this.playerImage;
+        return this.weaponImage;
     }
 
-    private String playerName;
-    private ImageIcon playerImage;
-    private User user;
     private int ID;
+    private String weaponName;
+    private ImageIcon weaponImage;
     private boolean clueAdded;
-
 }

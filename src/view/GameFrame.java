@@ -11,6 +11,10 @@ public class GameFrame extends JFrame {
         initialPanel = new InitialPanel();
         boardPanel = new BoardPanel();
         sidePanel = new SidePanel();
+        playersCluesPanel = new PlayersCluesPanel();
+        weaponsCluesPanel = new WeaponsCluesPanel();
+        roomsCluePanel = new RoomsCluePanel();
+        accusationPanel = new AccusationPanel();
 
         add(initialPanel);
 
@@ -20,19 +24,90 @@ public class GameFrame extends JFrame {
     }
 
     public void switchToBoard() {
-        // Configura el tamaño de la ventana
-        setSize(1800, 1000); // Ajusta el tamaño según tus necesidades
-
-        // Remueve el panel inicial
+        setSize(1200, 800);
         remove(initialPanel);
-
-        // Configura el diseño principal
+        remove(playersCluesPanel);
+        remove(weaponsCluesPanel);
+        remove(roomsCluePanel);
+        remove(accusationPanel);
         setLayout(new BorderLayout());
 
-        // Agrega el tablero al centro y el panel lateral a la derecha
         add(boardPanel, BorderLayout.CENTER);
         add(sidePanel, BorderLayout.EAST);
 
+        setLocationRelativeTo(null);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToBoardPanel () {
+        setSize(1200, 800);
+        remove(playersCluesPanel);
+        remove(weaponsCluesPanel);
+        remove(roomsCluePanel);
+        remove(accusationPanel);
+        //remove accusationPanel
+        setLayout(new BorderLayout());
+
+        add(boardPanel, BorderLayout.CENTER);
+        add(sidePanel, BorderLayout.EAST);
+        this.sidePanel.getGoBackButton().setEnabled(false);
+        setLocationRelativeTo(null);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToCluesPanel(int numPage){
+       if(numPage == 1){
+           this.switchToPlayersCluesPanel();
+       }else if(numPage == 2){
+           this.switchToWeaponsCluesPanel();
+       }else if(numPage == 3){
+           this.switchToRoomsCluesPanel();
+       }
+    }
+
+    public void switchToPlayersCluesPanel(){
+        setSize(1200, 800);
+        remove(boardPanel);
+        remove(accusationPanel);
+        add(playersCluesPanel, BorderLayout.CENTER);
+        setLocationRelativeTo(null);
+        //this.sidePanel.getGoBackButton().setEnabled(false);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToWeaponsCluesPanel(){
+        setSize(1200, 800);
+        remove(playersCluesPanel);
+        remove(accusationPanel);
+        add(weaponsCluesPanel, BorderLayout.CENTER);
+        setLocationRelativeTo(null);
+        //this.sidePanel.getGoBackButton().setEnabled(false);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToRoomsCluesPanel(){
+        setSize(1200, 800);
+        remove(playersCluesPanel);
+        remove(weaponsCluesPanel);
+        remove(accusationPanel);
+        add(roomsCluePanel, BorderLayout.CENTER);
+        setLocationRelativeTo(null);
+        //this.sidePanel.getGoBackButton().setEnabled(false);
+        revalidate();
+        repaint();
+    }
+
+    public void switchToAccusationPanel(){
+        setSize(1200, 800);
+        remove(boardPanel);
+        remove(playersCluesPanel);
+        remove(weaponsCluesPanel);
+        remove(roomsCluePanel);
+        add(accusationPanel, BorderLayout.CENTER);
         setLocationRelativeTo(null);
         revalidate();
         repaint();
@@ -50,9 +125,31 @@ public class GameFrame extends JFrame {
         return sidePanel;
     }
 
+
+
+    public PlayersCluesPanel getPlayersCluesPanel() {
+        return playersCluesPanel;
+    }
+
+    public WeaponsCluesPanel getWeaponsCluesPanel() {
+        return weaponsCluesPanel;
+    }
+
+    public RoomsCluePanel getRoomsCluePanel() {
+        return roomsCluePanel;
+    }
+
+    public AccusationPanel getAccusationPanel() {
+        return accusationPanel;
+    }
+
     private InitialPanel initialPanel;
     private BoardPanel boardPanel;
     private SidePanel sidePanel;
+    private PlayersCluesPanel playersCluesPanel;
+    private WeaponsCluesPanel weaponsCluesPanel;
+    private RoomsCluePanel roomsCluePanel;
+    private AccusationPanel accusationPanel;
 }
 
 

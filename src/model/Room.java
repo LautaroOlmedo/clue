@@ -1,38 +1,55 @@
 package model;
 
+import javax.swing.*;
+
 public class Room {
-    public Room(String name, int id) {
+    public Room(int ID, String name, String imageDir) throws Exception {
+        this.ID = ID;
         this.roomName = name;
-        this.ID = id;
+        this.roomImage = createImage(imageDir);
+        this.visitsMade = 0;
+        this.clueAdded = false;
     }
 
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-
-    public String[] getRoomTexts() {
-        return roomTexts;
-    }
-
-    public void setRoomTexts(String[] roomTexts) {
-        this.roomTexts = roomTexts;
+    public ImageIcon createImage(String image) throws Exception{
+        try {
+            this.roomImage = new ImageIcon(image);
+        } catch (Exception e) {
+            System.out.println("Failed to load image: " + image);
+            throw e;
+        }
+        return this.roomImage;
     }
 
     public int getID() {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    };
+    public void setClueAdded(boolean clueAdded) {
+        this.clueAdded = clueAdded;
+    }
+
+    public boolean getClueAdded() {
+        return this.clueAdded;
+    }
+
+    public ImageIcon getRoomImage() {
+        return roomImage;
+    }
+
+    public void investigate(){
+        System.out.println("visitas realizadas en la habitacion: "+ this.roomName + this.visitsMade);
+        this.visitsMade++;
+    }
+    public int getVisitsMade() {
+        return visitsMade;
+    }
+
     private String roomName;
-    private String[] roomTexts;
-    private String roomImage;
+    private ImageIcon roomImage;
     private int ID;
+    private int visitsMade;
+    private boolean clueAdded;
 
 
 }

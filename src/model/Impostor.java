@@ -5,7 +5,7 @@ public class Impostor {
         this.imposterPlayer = player;
     }
 
-    public Player getImposterPlayer() {
+    public Player getPlayer() {
         return imposterPlayer;
     }
 
