@@ -8,40 +8,27 @@ public class Player {
         this.ID = ID;
         this.playerName = name;
         this.playerImage = createImage(imageDir);
-        //this.user = user;
+        this.clueAdded = false;
     }
 
     public int getID() {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setClueAdded(boolean clueAdded) {
+        this.clueAdded = clueAdded;
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public boolean getClueAdded() {
+        return this.clueAdded;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
 
     public ImageIcon getPlayerImage() {
         return playerImage;
     }
 
-    public void setPlayerImage(ImageIcon playerImage) {
-        this.playerImage = playerImage;
-    }
 
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUsertoPlayer(User user) {
-        this.user = user;
-    }
 
 
     public ImageIcon createImage(String image) throws Exception{
@@ -58,5 +45,6 @@ public class Player {
     private ImageIcon playerImage;
     private User user;
     private int ID;
+    private boolean clueAdded;
 
 }

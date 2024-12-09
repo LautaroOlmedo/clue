@@ -39,10 +39,10 @@ public class Rules {
 
   public ArrayList<Weapon> createWeapons() throws Exception{
       try {
-            Weapon candlestick = new Weapon(1, "clibre", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/vela.jpeg");
-            Weapon carvinKnife = new Weapon(2, "cuchillo", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/knife.jpeg");
-            Weapon gun = new Weapon(3, "revolver", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/gun.jpeg");
-            Weapon pipe = new Weapon(4, "tuberia", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/pipe.jpeg");
+            Weapon candlestick = new Weapon(1, "Candelabro", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/vela.jpeg");
+            Weapon carvinKnife = new Weapon(2, "Cuchillo", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/knife.jpeg");
+            Weapon gun = new Weapon(3, "Revolver", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/gun.jpeg");
+            Weapon pipe = new Weapon(4, "TuberÍa", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/pipe.jpeg");
           System.out.println("weapons created correctly");
             weapons.add(candlestick);
             weapons.add(carvinKnife);
@@ -60,12 +60,12 @@ public class Rules {
     public ArrayList<Room> createRooms(){
         try{
             Room kitchen = new Room(1, "Kitchen", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg");
-            Room diningRoom = new Room(2, "Dining Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg");
+            Room diningRoom = new Room(2, "Dining Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/dining-room.jpeg");
             Room ballroom = new Room(3, "Ball Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/ball-room.jpeg");
             Room billiardRoom = new Room(4, "Billiard Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/billiard-room.jpeg");
             Room hall = new Room(5, "Hall", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/hall.jpeg");
             Room library = new Room(6, "Library", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg");
-            Room lounge = new Room(7, "Lounge", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg");
+            Room lounge = new Room(7, "Lounge", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/lounge.jpeg");
             Room study = new Room(8, "Study", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/study.jpeg");
             Room conservatory = new Room(9, "Conservatory", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/conservatory.jpeg");
             //System.out.println("rooms created correctly");
@@ -127,17 +127,15 @@ public class Rules {
             return null; // No quedan jugadores
         }
         Player selectedPlayer = null;
-        Iterator<Player> playerIterator = players.iterator();
-        while (playerIterator.hasNext()) {
-            Player player = playerIterator.next();
+        for (Player player : players) {
             int random = getRandomNumber();
-            if (player.getID() == random && player.getID() != impostor.getPlayer().getID()) {
+            if (player.getID() == random && player.getID() != impostor.getPlayer().getID() && !player.getClueAdded()) {
                 selectedPlayer = player;
-                playerIterator.remove();
+                selectedPlayer.setClueAdded(true);
+                this.clues.addPlayerClue(selectedPlayer);
                 break;
             }
         }
-        System.out.println("cantidad de players en arrayList: " + " " + players.size());
         return selectedPlayer;
     }
 
@@ -160,17 +158,15 @@ public class Rules {
             return null;
         }
         Weapon selectedWeapon = null;
-        Iterator<Weapon> weaponsIterator = weapons.iterator();
-        while (weaponsIterator.hasNext()) {
-            Weapon weapon = weaponsIterator.next();
+        for (Weapon weapon : weapons) {
             int random = getRandomNumber();
-            if (weapon.getID() == random && weapon.getID() != crime.getWeapon().getID()) {
+            if (weapon.getID() == random && weapon.getID() != crime.getWeapon().getID() && !weapon.getClueAdded()) {
                 selectedWeapon = weapon;
-                weaponsIterator.remove(); // Elimina el elemento actual de forma segura
+                selectedWeapon.setClueAdded(true);
+                this.clues.addWeaponClue(selectedWeapon);
                 break;
             }
         }
-        System.out.println("cantidad de armas en arrayList: " + " " + weapons.size());
         return selectedWeapon;
     }
 
@@ -193,17 +189,15 @@ public class Rules {
             return null;
         }
         Room selectedRoom = null;
-        Iterator<Room> roomsIterator = rooms.iterator();
-        while(roomsIterator.hasNext()){
-            Room room = roomsIterator.next();
+        for (Room room : rooms) {
             int random = getRandomNumberBetweenOneAndNine();
-            if(room.getID() == random && room.getID() != crime.getRoom().getID()){
+            if (room.getID() == random && room.getID() != crime.getRoom().getID() && !room.getClueAdded()) {
                 selectedRoom = room;
-                roomsIterator.remove();
+                selectedRoom.setClueAdded(true);
+                this.clues.addRoomClue(selectedRoom);
                 break;
             }
         }
-        System.out.println("cantidad de habitaciones en arrayList: " + " " + rooms.size());
         return selectedRoom;
     }
 
@@ -238,6 +232,28 @@ public class Rules {
         return crime;
     }
 
+    public boolean areThereCluesLeftToAdd() {
+
+        for (Player player : players) {
+            if (!player.getClueAdded()) {
+                return true;
+            }
+        }
+        for (Weapon weapon : weapons) {
+            if (!weapon.getClueAdded()) {
+                return true;
+            }
+        }
+        for (Room room : rooms) {
+            if (!room.getClueAdded()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
     public boolean validateAllowedClues(){
         return this.getPlayersAllowed() > 1 || this.getWeaponsAllowed() > 1 || this.getRoomsAllowed() > 1;
     }
@@ -267,9 +283,48 @@ public class Rules {
         this.cluePage = 1;
     }
 
-    public void kitchenInvestigate(){
-
+    public void investigateRoom(int ID){
+        Room room = getRoomByID(ID);
+        room.investigate();
     }
+
+    public boolean validateVisitRoom(int ID){
+        Room room = getRoomByID(ID);
+        if (room.getVisitsMade() <= 1){
+            return true;
+        }
+      return false;
+    }
+
+    public Player getPlayerByID(int ID) {
+        for (Player player : players) {
+            if (player.getID() == ID) {
+                return player; // Retorna el jugador si el ID coincide
+            }
+        }
+        return null; // Retorna null si no se encuentra ningún jugador con el ID proporcionado
+    }
+
+    public Weapon getWeaponByID(int ID) {
+        for (Weapon weapon : weapons) {
+            if (weapon.getID() == ID) {
+                return weapon; // Retorna el arma si el ID coincide
+            }
+        }
+        return null; // Retorna null si no se encuentra ningún arma con el ID proporcionado
+    }
+
+
+    public Room getRoomByID(int ID) {
+        for (Room room : rooms) {
+            if (room.getID() == ID) {
+                return room;
+            }
+        }
+        return null;
+    }
+
+
 
     private User user;
     private Impostor impostor;
@@ -284,14 +339,3 @@ public class Rules {
 
 }
 
- /*   public void selectPlayer(String playerName){
-        Iterator<Player> iterator = players.iterator();
-        while (iterator.hasNext()) {
-            Player player = iterator.next();
-            if (player.getPlayerName().equals(playerName)){
-                player.setUsertoPlayer(user);
-                System.out.printf("user %s has chose player %s.\n", user.getUserName(), player.getPlayerName());
-
-            }
-        }
-    }*/

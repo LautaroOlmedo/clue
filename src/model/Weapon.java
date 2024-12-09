@@ -7,31 +7,28 @@ public class Weapon {
         this.ID = ID;
         this.weaponName = weaponName;
         this.weaponImage = createImage(weaponImageDir);
+        this.clueAdded = false;
     }
 
     public int getID() {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setClueAdded(boolean clueAdded) {
+        this.clueAdded = clueAdded;
     }
 
-    public String getWeaponName() {
-        return weaponName;
+    public boolean getClueAdded() {
+        return this.clueAdded;
     }
 
-    public void setWeaponName(String weaponName) {
-        this.weaponName = weaponName;
-    }
+
 
     public ImageIcon getWeaponImage() {
         return weaponImage;
     }
 
-    public void setWeaponImageImage(ImageIcon weaponImage) {
-        this.weaponImage = weaponImage;
-    }
+
 
     public ImageIcon createImage(String image) throws Exception{
         try {
@@ -46,4 +43,5 @@ public class Weapon {
     private int ID;
     private String weaponName;
     private ImageIcon weaponImage;
+    private boolean clueAdded;
 }

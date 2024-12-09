@@ -7,6 +7,8 @@ public class Room {
         this.ID = ID;
         this.roomName = name;
         this.roomImage = createImage(imageDir);
+        this.visitsMade = 0;
+        this.clueAdded = false;
     }
 
     public ImageIcon createImage(String image) throws Exception{
@@ -19,25 +21,35 @@ public class Room {
         return this.roomImage;
     }
 
-    public String getRoomName() {
-        return roomName;
+    public int getID() {
+        return ID;
+    }
+
+    public void setClueAdded(boolean clueAdded) {
+        this.clueAdded = clueAdded;
+    }
+
+    public boolean getClueAdded() {
+        return this.clueAdded;
     }
 
     public ImageIcon getRoomImage() {
         return roomImage;
     }
 
-    public int getID() {
-        return ID;
+    public void investigate(){
+        System.out.println("visitas realizadas" + this.visitsMade);
+        this.visitsMade++;
+    }
+    public int getVisitsMade() {
+        return visitsMade;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    };
     private String roomName;
-
     private ImageIcon roomImage;
     private int ID;
+    private int visitsMade;
+    private boolean clueAdded;
 
 
 }

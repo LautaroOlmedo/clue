@@ -68,6 +68,4 @@ public class PlayersCluesPanel extends JPanel {
     private JButton playerThreeButton;
 
     private Image cluesBackground;
-
-
 }

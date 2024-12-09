@@ -16,19 +16,13 @@ public class RoomsCluePanel extends JPanel {
     }
 
     public void setRoomsClues(){
-        // Botón principal "Habitaciones"
-       /* roomsButton = new JButton("Habitaciones");
-        roomsButton.setBounds(350, 6, 200, 50); // Debajo del botón "Armas"
-        this.add(roomsButton);*/
 
-        // Botones de habitaciones (6 botones en una fila)
         roomOneButton = new JButton();
         roomOneButton = new JButton();
         roomOneButton.setOpaque(false);
         roomOneButton.setContentAreaFilled(false);
         roomOneButton.setBorderPainted(false);
-        //roomOneButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
-        roomOneButton.setBounds(-10, 60, 230, 350); // Primer botón
+        roomOneButton.setBounds(-10, 60, 230, 350);
         this.add(roomOneButton);
 
         roomTwoButton = new JButton();
@@ -36,7 +30,6 @@ public class RoomsCluePanel extends JPanel {
         roomTwoButton.setOpaque(false);
         roomTwoButton.setContentAreaFilled(false);
         roomTwoButton.setBorderPainted(false);
-        //roomTwoButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
         roomTwoButton.setBounds(220, 60, 230, 350);
         this.add(roomTwoButton);
 
@@ -44,8 +37,7 @@ public class RoomsCluePanel extends JPanel {
         roomThreeButton.setOpaque(false);
         roomThreeButton.setContentAreaFilled(false);
         roomThreeButton.setBorderPainted(false);
-        //roomThreeButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
-        roomThreeButton.setBounds(450, 60, 230, 350); // Tercer botón
+        roomThreeButton.setBounds(450, 60, 230, 350);
         this.add(roomThreeButton);
 
         roomFourButton = new JButton();
@@ -53,8 +45,7 @@ public class RoomsCluePanel extends JPanel {
         roomFourButton.setOpaque(false);
         roomFourButton.setContentAreaFilled(false);
         roomFourButton.setBorderPainted(false);
-        //roomFourButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
-        roomFourButton.setBounds(680, 60, 230, 350); // Cuarto botón
+        roomFourButton.setBounds(680, 60, 230, 350);
         this.add(roomFourButton);
 
         roomFiveButton = new JButton();
@@ -62,8 +53,7 @@ public class RoomsCluePanel extends JPanel {
         roomFiveButton.setOpaque(false);
         roomFiveButton.setContentAreaFilled(false);
         roomFiveButton.setBorderPainted(false);
-        //roomFiveButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
-        roomFiveButton.setBounds(-10, 410, 230, 350); // Quinto botón
+        roomFiveButton.setBounds(-10, 410, 230, 350);
         this.add(roomFiveButton);
 
         roomSixButton = new JButton();
@@ -71,8 +61,7 @@ public class RoomsCluePanel extends JPanel {
         roomSixButton.setOpaque(false);
         roomSixButton.setContentAreaFilled(false);
         roomSixButton.setBorderPainted(false);
-        //roomSixButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
-        roomSixButton.setBounds(220, 410, 230, 350); // Sexto botón
+        roomSixButton.setBounds(220, 410, 230, 350);
         this.add(roomSixButton);
 
         roomSevenButton = new JButton();
@@ -80,8 +69,7 @@ public class RoomsCluePanel extends JPanel {
         roomSevenButton.setOpaque(false);
         roomSevenButton.setContentAreaFilled(false);
         roomSevenButton.setBorderPainted(false);
-        //roomSevenButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
-        roomSevenButton.setBounds(450, 410, 230, 350); // Sexto botón
+        roomSevenButton.setBounds(450, 410, 230, 350);
         this.add(roomSevenButton);
 
         roomEightButton = new JButton();
@@ -89,8 +77,7 @@ public class RoomsCluePanel extends JPanel {
         roomEightButton.setOpaque(false);
         roomEightButton.setContentAreaFilled(false);
         roomEightButton.setBorderPainted(false);
-        //roomEightButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
-        roomEightButton.setBounds(680, 410, 230, 350); // Sexto botón
+        roomEightButton.setBounds(680, 410, 230, 350);
         this.add(roomEightButton);
     }
 
