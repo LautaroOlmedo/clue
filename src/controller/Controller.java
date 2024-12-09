@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import view.GameFrame;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -78,7 +79,7 @@ public class Controller implements ActionListener {
             System.exit(0);
         }
 
-        this.gameFrame.getAccusationPanel().getAccuseButton().setEnabled(false);
+        //this.gameFrame.getAccusationPanel().getAccuseButton().setEnabled(false);
        this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(false);
         if (this.rules.getCluePage() >= 2) { // IMPIDE CONTINUAR CON EL PAGINADO
             this.gameFrame.getSidePanel().getNextPageButton().setEnabled(false);
@@ -91,18 +92,26 @@ public class Controller implements ActionListener {
             }
             this.gameFrame.switchToCluesPanel(this.rules.getCluePage());
         }
+        if(this.gameFrame.getAccusationPanel().validatePlayersIconButtons() && this.gameFrame.getAccusationPanel().validateWeaponsIconButtons() && this.gameFrame.getAccusationPanel().validateRoomsIconButtons()){
+            this.gameFrame.getAccusationPanel().getAccuseButton().setEnabled(true);
+        }
         if (e.getSource().equals(this.gameFrame.getSidePanel().getAccusePlayerButton())) { // VER PANEL ACUSAR
             this.gameFrame.getSidePanel().getGoBackButton().setEnabled(true);
             this.rules.resetCluePage();
-            if(this.gameFrame.getAccusationPanel().validatePlayersIconButtons() && this.gameFrame.getAccusationPanel().validateWeaponsIconButtons() && this.gameFrame.getAccusationPanel().validateRoomsIconButtons()){
-                this.gameFrame.getAccusationPanel().getAccuseButton().setEnabled(true);
-            }
+
             this.gameFrame.switchToAccusationPanel();
 
         }
-    /*    if (e.getSource().equals(this.gameFrame.getAccusationPanel().getAccuseButton())) { // ACUSAR
-
-        }*/
+        if (e.getSource().equals(this.gameFrame.getAccusationPanel().getAccuseButton())) { // ACUSAR
+            boolean verifyCrime = this.rules.accusePlayer(this.gameFrame.getAccusationPanel().getAccusedPlayerButton().getText(), this.gameFrame.getAccusationPanel().getAccusedWeaponButton().getText(), this.gameFrame.getAccusationPanel().getAccusedRoomButton().getText());
+            if(verifyCrime){
+                JOptionPane.showMessageDialog(null, "GANASTE. El crimen fue cometido por " + this.gameFrame.getAccusationPanel().getAccusedPlayerButton().getText() + " . Utilizo el arma " + this.gameFrame.getAccusationPanel().getAccusedWeaponButton().getText() + " en la sala " + this.gameFrame.getAccusationPanel().getAccusedRoomButton().getText());
+                System.exit(0);
+            }else{
+                JOptionPane.showMessageDialog(null, "PERDISTE. El crimen fue cometido por " + this.gameFrame.getAccusationPanel().getAccusedPlayerButton().getText() + " . Utilizo el arma " + this.gameFrame.getAccusationPanel().getAccusedWeaponButton().getText() + " en la sala " + this.gameFrame.getAccusationPanel().getAccusedRoomButton().getText());
+                System.exit(0);
+            }
+        }
         if(e.getSource().equals(this.gameFrame.getSidePanel().getGoBackButton())){ // VOLVER AL PANEL PRINCIPAL
             this.gameFrame.getSidePanel().getNextPageButton().setEnabled(false);
             this.rules.resetCluePage();

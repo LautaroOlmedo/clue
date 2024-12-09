@@ -6,7 +6,7 @@ import java.awt.*;
 public class WeaponsCluesPanel extends JPanel {
     public WeaponsCluesPanel() {
         this.setLayout(null);
-        this.cluesBackground = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clues-background.jpg").getImage();
+        this.cluesBackground = new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/view/images/clues-background.jpg").getImage();
         this.setWeaponsClues();
     }
     @Override

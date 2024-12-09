@@ -6,7 +6,7 @@ import java.awt.*;
 public class AccusationPanel extends JPanel {
     public AccusationPanel() {
         this.setLayout(null);
-        this.cluesBackground = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clues-background.jpg").getImage();
+        this.cluesBackground = new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/view/images/clues-background.jpg").getImage();
         this.setAccusePanel();
     }
     @Override
@@ -213,47 +213,64 @@ public class AccusationPanel extends JPanel {
 
     public void setPLayerAccused() {
         if (firstPlayer.isSelected()) {
-            this.accusedPlayerButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/players/miss-blue.jpeg"));
+            this.accusedPlayerButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/players/miss-blue.jpeg"));
+            accusedPlayerButton.setText("Mrs Peacock");
         }else if (secondPlayer.isSelected()) {
-            this.accusedPlayerButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/players/miss-red.jpeg"));
+            this.accusedPlayerButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/players/miss-red.jpeg"));
+            accusedPlayerButton.setText("Miss Scarlet");
         }else if (thirdPlayer.isSelected()) {
-            this.accusedPlayerButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/players/mr-green.jpeg"));
+            this.accusedPlayerButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/players/mr-green.jpeg"));
+            accusedPlayerButton.setText("Mr Green");
         }else if (fourthPlayer.isSelected()) {
-            this.accusedPlayerButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/players/violet.jpeg"));
+            this.accusedPlayerButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/players/violet.jpeg"));
+            accusedPlayerButton.setText("Prof Plum");
         }
     }
 
     public void setWeaponAccused(){
         if (firstWeapon.isSelected()){
-            this.accusedWeaponButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/weapons/vela.jpeg"));
+            this.accusedWeaponButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/weapons/vela.jpeg"));
+            accusedWeaponButton.setText("Candelabro");
         } else if (secondWeapon.isSelected()) {
-            this.accusedWeaponButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/weapons/knife.jpeg"));
+            this.accusedWeaponButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/weapons/knife.jpeg"));
+            accusedWeaponButton.setText("Cuchillo");
         }else if (thirdWeapon.isSelected()) {
-            this.accusedWeaponButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/weapons/gun.jpeg"));
+            this.accusedWeaponButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/weapons/gun.jpeg"));
+            accusedWeaponButton.setText("Revolver");
         }else if (fourthWeapon.isSelected()) {
-            this.accusedWeaponButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/weapons/pipe.jpeg"));
+            this.accusedWeaponButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/weapons/pipe.jpeg"));
+            accusedWeaponButton.setText("Tubería");
         }
     }
 
     public void setRoomAccused(){
         if (firstRoom.isSelected()){
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/kitchen.png"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/kitchen.png"));
+            accusedRoomButton.setText("Kitchen");
         } else if (secondRoom.isSelected()) {
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/dining-room.jpeg"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/dining-room.jpeg"));
+            accusedRoomButton.setText("Dining Room");
         }else if (thirdRoom.isSelected()) {
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/ball-room.jpeg"));
-        }else if (fourthRoom.isSelected()) {
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/billiard-room.jpeg"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/ball-room.jpeg"));
+            accusedRoomButton.setText("Ball Room");
+        } else if (fourthRoom.isSelected()) {
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/billiard-room.jpeg"));
+            accusedRoomButton.setText("Billiard Room");
         }else if (fivethRoom.isSelected()) {
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/hall.jpeg"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/hall.jpeg"));
+            accusedRoomButton.setText("Hall");
         } else if (sixthRoom.isSelected()) {
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
+            accusedRoomButton.setText("Library");
         } else if (seventhRoom.isSelected()) {
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/lounge.jpeg"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/lounge.jpeg"));
+            accusedRoomButton.setText("Lounge");
         }else if (eighthRoom.isSelected()) {
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/study.jpeg"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/study.jpeg"));
+            accusedRoomButton.setText("Study");
         }else if (ninthRoom.isSelected()) {
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/conservatory.jpeg"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/conservatory.jpeg"));
+            accusedRoomButton.setText("Conservatory");
         }
     }
 
@@ -309,3 +326,6 @@ public class AccusationPanel extends JPanel {
     private Image cluesBackground;
 
 }
+
+
+// MAC FILE DIRECTION: /Users/lautaroolmedo/IdeaProjects/clue/src/model/images

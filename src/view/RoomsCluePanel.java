@@ -6,7 +6,7 @@ import java.awt.*;
 public class RoomsCluePanel extends JPanel {
     public RoomsCluePanel() {
         this.setLayout(null);
-        this.cluesBackground = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clues-background.jpg").getImage();
+        this.cluesBackground = new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/view/images/clues-background.jpg").getImage();
         this.setRoomsClues();
     }
     @Override

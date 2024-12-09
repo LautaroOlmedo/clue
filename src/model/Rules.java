@@ -20,16 +20,16 @@ public class Rules {
 
     public ArrayList<Player> createPlayers() throws Exception {
         try {
-            Player missBlue = new Player(1, "Mrs Peacock", "/home/lautaro/IdeaProjects/clue/src/model/images/players/miss-blue.jpeg" );
-            Player missRed = new Player(2, "Miss Scarlet", "/home/lautaro/IdeaProjects/clue/src/model/images/players/miss-red.jpeg");
-            Player mrGreen = new Player(3, "Mr Green", "/home/lautaro/IdeaProjects/clue/src/model/images/players/mr-green.jpeg");
-            Player mrViolet = new Player(4, "Prof Plum", "/home/lautaro/IdeaProjects/clue/src/model/images/players/violet.jpeg");
+            Player missBlue = new Player(1, "Mrs Peacock", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/players/miss-blue.jpeg" );
+            Player missRed = new Player(2, "Miss Scarlet", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/players/miss-red.jpeg");
+            Player mrGreen = new Player(3, "Mr Green", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/players/mr-green.jpeg");
+            Player mrViolet = new Player(4, "Prof Plum", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/players/violet.jpeg");
             //System.out.println("players created correctly");
             players.add(missBlue);
             players.add(missRed);
             players.add(mrGreen);
             players.add(mrViolet);
-            //System.out.println("players added to arrayList correctly");
+            System.out.println("players added to arrayList correctly");
         }catch (Exception e){
             System.out.println("Failed to create players or load images: " + e.getMessage());
             e.printStackTrace();
@@ -39,17 +39,16 @@ public class Rules {
 
   public ArrayList<Weapon> createWeapons() throws Exception{
       try {
-            Weapon candlestick = new Weapon(1, "Candelabro", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/vela.jpeg");
-            Weapon carvinKnife = new Weapon(2, "Cuchillo", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/knife.jpeg");
-            Weapon gun = new Weapon(3, "Revolver", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/gun.jpeg");
-            Weapon pipe = new Weapon(4, "TuberÍa", "/home/lautaro/IdeaProjects/clue/src/model/images/weapons/pipe.jpeg");
+            Weapon candlestick = new Weapon(1, "Candelabro", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/weapons/vela.jpeg");
+            Weapon carvinKnife = new Weapon(2, "Cuchillo", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/weapons/knife.jpeg");
+            Weapon gun = new Weapon(3, "Revolver", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/weapons/gun.jpeg");
+            Weapon pipe = new Weapon(4, "Tubería", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/weapons/pipe.jpeg");
           System.out.println("weapons created correctly");
             weapons.add(candlestick);
             weapons.add(carvinKnife);
             weapons.add(gun);
             weapons.add(pipe);
           System.out.println("weapons added to arrayList correctly");
-          System.out.println("weapons quantity:" + weapons.size());
       } catch (Exception e) {
           System.out.println("Failed to create weapons or load images: " + e.getMessage());
           e.printStackTrace();
@@ -59,15 +58,15 @@ public class Rules {
 
     public ArrayList<Room> createRooms(){
         try{
-            Room kitchen = new Room(1, "Kitchen", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/kitchen.png");
-            Room diningRoom = new Room(2, "Dining Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/dining-room.jpeg");
-            Room ballroom = new Room(3, "Ball Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/ball-room.jpeg");
-            Room billiardRoom = new Room(4, "Billiard Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/billiard-room.jpeg");
-            Room hall = new Room(5, "Hall", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/hall.jpeg");
-            Room library = new Room(6, "Library", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg");
-            Room lounge = new Room(7, "Lounge", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/lounge.jpeg");
-            Room study = new Room(8, "Study", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/study.jpeg");
-            Room conservatory = new Room(9, "Conservatory", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/conservatory.jpeg");
+            Room kitchen = new Room(1, "Kitchen", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/kitchen.png");
+            Room diningRoom = new Room(2, "Dining Room", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/dining-room.jpeg");
+            Room ballroom = new Room(3, "Ball Room", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/ball-room.jpeg");
+            Room billiardRoom = new Room(4, "Billiard Room", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/billiard-room.jpeg");
+            Room hall = new Room(5, "Hall", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/hall.jpeg");
+            Room library = new Room(6, "Library", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/library.jpeg");
+            Room lounge = new Room(7, "Lounge", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/lounge.jpeg");
+            Room study = new Room(8, "Study", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/study.jpeg");
+            Room conservatory = new Room(9, "Conservatory", "/Users/lautaroolmedo/IdeaProjects/clue/src/model/images/rooms/conservatory.jpeg");
             //System.out.println("rooms created correctly");
             rooms.add(kitchen);
             rooms.add(diningRoom);
@@ -78,7 +77,7 @@ public class Rules {
             rooms.add(lounge);
             rooms.add(study);
             rooms.add(conservatory);
-            //System.out.println("rooms added to arrayList correctly");
+            System.out.println("rooms added to arrayList correctly");
         } catch (Exception e) {
             System.out.println("Failed to create rooms or load images: " + e.getMessage());
             e.printStackTrace();
@@ -206,22 +205,8 @@ public class Rules {
         return crime;
     }
 
-    public void addPlayerClue(Player player){
-        this.clues.addPlayerClue(player);
-    }
-    public void addWeaponClue(Weapon weapon){
-        this.clues.addWeaponClue(weapon);
-    }
-    public void addRoomClue(Room room){
-        this.clues.addRoomClue(room);
-    }
-
-    public boolean accusePlayer(Player player, Room room, Weapon weapon){
-        return this.verifyAccusation(player, room, weapon);
-    }
-
-    private boolean verifyAccusation(Player player, Room room, Weapon weapon){
-        return crime.getRoom().equals(room) && crime.getWeapon().equals(weapon) && impostor.getPlayer().equals(player);
+    public boolean accusePlayer(String playerName, String weaponName, String roomName){
+        return (getCrime().getImpostor().getPlayer().getName().equals(playerName) && getCrime().getWeapon().getName().equals(weaponName) && getCrime().getRoom().getName().equals(roomName));
     }
 
     public Impostor getImpostor() {

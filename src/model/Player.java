@@ -14,15 +14,15 @@ public class Player {
     public int getID() {
         return ID;
     }
-
+    public String getName() {
+        return playerName;
+    }
     public void setClueAdded(boolean clueAdded) {
         this.clueAdded = clueAdded;
     }
-
     public boolean getClueAdded() {
         return this.clueAdded;
     }
-
 
     public ImageIcon getPlayerImage() {
         return playerImage;

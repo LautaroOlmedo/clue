@@ -13,17 +13,15 @@ public class Weapon {
     public int getID() {
         return ID;
     }
-
+    public String getName() {
+        return this.weaponName;
+    }
     public void setClueAdded(boolean clueAdded) {
         this.clueAdded = clueAdded;
     }
-
     public boolean getClueAdded() {
         return this.clueAdded;
     }
-
-
-
     public ImageIcon getWeaponImage() {
         return weaponImage;
     }

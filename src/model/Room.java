@@ -24,7 +24,9 @@ public class Room {
     public int getID() {
         return ID;
     }
-
+    public String getName() {
+        return roomName;
+    }
     public void setClueAdded(boolean clueAdded) {
         this.clueAdded = clueAdded;
     }
