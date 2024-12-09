@@ -212,8 +212,6 @@ public class Rules {
         return crime;
     }
 
-
-
     public void addPlayerClue(Player player){
         this.clues.addPlayerClue(player);
     }
@@ -257,9 +255,6 @@ public class Rules {
         return rooms.size();
     }
 
-    public void sumMoveMade(){
-        this.plays++;
-    }
 
     public void sumCluePage(){
         this.cluePage++;
@@ -270,6 +265,10 @@ public class Rules {
     }
     public void resetCluePage() {
         this.cluePage = 1;
+    }
+
+    public void kitchenInvestigate(){
+
     }
 
     private User user;

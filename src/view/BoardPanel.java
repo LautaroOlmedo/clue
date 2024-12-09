@@ -6,13 +6,13 @@ import java.awt.*;
 public class BoardPanel extends JPanel {
     public BoardPanel() {
         this.setLayout(null);
-        this.fondo = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/fondo.png").getImage();
+        this.boardBackground = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/fondo.png").getImage();
         this.createBoard();
     }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(boardBackground, 0, 0, getWidth(), getHeight(), this);
     }
 
     private void createBoard() {
@@ -132,71 +132,5 @@ public class BoardPanel extends JPanel {
     private JButton billardRoomButton;
     private JButton libraryRoomButton;
     private JButton conservatoryButton;
-    private Image fondo;
+    private Image boardBackground;
 }
-
-/*  for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int j = 0; j < BOARD_SIZE; j++) {
-                JButton button;
-                switch (board[i][j]) {
-                    case "kitchen" -> button = kitchenButton;
-                    case "dining-room" -> button = diningRoomButtom;
-                    case "balcony" -> button = balconyButtom;
-                    case "master-bathroom" -> button = masterBathroomButton;
-                    case "study" -> button = studyButton;
-                    case "sitting-room" -> button = sittingRoomButton;
-                    case "basement" -> button = basementButton;
-                    case "master-bedroom" -> button = masterBedroomButton;
-                    case "perfilCuco" -> button = habitacion3Button;
-                    default -> button = new JButton();
-                }
-                button.setText(board[i][j]);
-
-                button.setPreferredSize(new Dimension(200, 200));
-                button.setPreferredSize(new Dimension(TILE_SIZE, TILE_SIZE));
-                button.setBackground(board[i][j].isEmpty() ? Color.LIGHT_GRAY : new Color(200, 200, 255)); // Color claro para las habitaciones y gris para pasillos
-                button.setOpaque(true);
-                button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-                button.setBorderPainted(false);
-                button.setContentAreaFilled(false);
-
-
-                add(button);
-
-                if (!board[i][j].isEmpty()) {
-                    try {
-                        // Cargar la imagen desde los recursos
-                        ImageIcon icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/test.jpeg");
-                        // Redimensionar la imagen al tamaño del botón
-                        Image scaledImage = icon.getImage().getScaledInstance(300, 200, 50);
-                        button.setIcon(new ImageIcon(scaledImage));
-
-                        // Eliminar texto y bordes para mostrar solo la imagen
-                        button.setText("");
-                        button.setBorderPainted(true);
-                        button.setFocusPainted(false);
-                        // button.setContentAreaFilled(false);
-                    } catch (Exception e) {
-                        System.err.println("No se pudo cargar la imagen para " + board[i][j]);
-                    }
-                }else{
-                    ImageIcon icon = new ImageIcon();
-                    if (i != 1 && i != 3) {
-                        icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/road.png");
-                    }else{
-                        icon = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/road-2.png");
-                    }
-                    Image scaledImage = icon.getImage().getScaledInstance(300, 300, 50);
-                    button.setIcon(new ImageIcon(scaledImage));
-
-                    // Eliminar texto y bordes para mostrar solo la imagen
-                    button.setText("");
-                    button.setBorderPainted(true);
-                    button.setFocusPainted(false);
-                }
-
-                add(button);
-            }
-        }
-    }*/

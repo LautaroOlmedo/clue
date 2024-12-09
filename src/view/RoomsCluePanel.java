@@ -1,18 +1,25 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class RoomsCluePanel extends JPanel {
     public RoomsCluePanel() {
         this.setLayout(null);
+        this.cluesBackground = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clues-background.jpg").getImage();
         this.setRoomsClues();
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(cluesBackground, 0, 0, getWidth(), getHeight(), this);
     }
 
     public void setRoomsClues(){
         // Botón principal "Habitaciones"
-        roomsButton = new JButton("Habitaciones");
+       /* roomsButton = new JButton("Habitaciones");
         roomsButton.setBounds(350, 6, 200, 50); // Debajo del botón "Armas"
-        this.add(roomsButton);
+        this.add(roomsButton);*/
 
         // Botones de habitaciones (6 botones en una fila)
         roomOneButton = new JButton();
@@ -106,7 +113,6 @@ public class RoomsCluePanel extends JPanel {
             roomEightButton.setIcon(roomImage);
         }
     }
-
     private JButton roomsButton;
     private JButton roomOneButton;
     private JButton roomTwoButton;
@@ -116,5 +122,6 @@ public class RoomsCluePanel extends JPanel {
     private JButton roomSixButton;
     private JButton roomSevenButton;
     private JButton roomEightButton;
-    private JButton roomNineButton;
+
+    private Image cluesBackground;
 }

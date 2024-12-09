@@ -28,7 +28,7 @@ public class SidePanel extends JPanel {
         add(accusePlayerButton, gbcAccuse);
 
         // Botón Investigate
-        investigateButton.setBackground(Color.WHITE);
+        investigateButton.setBackground(Color.DARK_GRAY);
         investigateButton.setPreferredSize(new Dimension(200, 40));
         GridBagConstraints gbcInvestigate = new GridBagConstraints();
         gbcInvestigate.gridx = 0;
@@ -39,7 +39,7 @@ public class SidePanel extends JPanel {
         add(investigateButton, gbcInvestigate);
 
         // Botón Go Back
-        goBackButton.setBackground(Color.WHITE);
+        goBackButton.setBackground(Color.DARK_GRAY);
         goBackButton.setPreferredSize(new Dimension(200, 40));
         GridBagConstraints gbcGoBack = new GridBagConstraints();
         gbcGoBack.gridx = 0;
@@ -50,7 +50,7 @@ public class SidePanel extends JPanel {
         add(goBackButton, gbcGoBack);
 
         // Botón Next Page
-        nextPageButton.setBackground(Color.WHITE);
+        nextPageButton.setBackground(Color.DARK_GRAY);
         nextPageButton.setPreferredSize(new Dimension(200, 40));
         GridBagConstraints gbcNextPage = new GridBagConstraints();
         gbcNextPage.gridx = 0;
@@ -76,7 +76,7 @@ public class SidePanel extends JPanel {
         add(scrollPane1, gbcScrollPane);
 
         // Configurar tamaño del panel
-        setPreferredSize(new Dimension(300, TILE_SIZE * BOARD_SIZE));
+        setPreferredSize(new Dimension(300, 20));
     }
 
     // Métodos para agregar texto a las JTextAreas

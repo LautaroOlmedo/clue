@@ -1,18 +1,25 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class WeaponsCluesPanel extends JPanel {
     public WeaponsCluesPanel() {
         this.setLayout(null);
+        this.cluesBackground = new ImageIcon("/home/lautaro/IdeaProjects/clue/src/view/images/clues-background.jpg").getImage();
         this.setWeaponsClues();
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(cluesBackground, 0, 0, getWidth(), getHeight(), this);
     }
 
     public void setWeaponsClues(){
         // Botón principal "Armas"
-        weaponsButton = new JButton("Armas");
+       /* weaponsButton = new JButton("Armas");
         weaponsButton.setBounds(350, 10, 200, 50);
-        this.add(weaponsButton);
+        this.add(weaponsButton);*/
 
         // Botones de armas (con tamaño aumentado para imágenes)
         weaponOneButton = new JButton();
@@ -51,10 +58,10 @@ public class WeaponsCluesPanel extends JPanel {
         }
     }
 
-
-
     private JButton weaponsButton;
     private JButton weaponOneButton;
     private JButton weaponTwoButton;
     private JButton weaponThreeButton;
+
+    private Image cluesBackground;
 }

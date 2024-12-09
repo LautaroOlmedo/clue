@@ -136,16 +136,6 @@ public class Controller implements ActionListener {
 
         }
     }
-
-
-
-    private int getRandomNumberBetBetweenOneAndFour() {
-        Random random = new Random();
-        return random.nextInt(3) + 1;
-    }
-
-
     private Rules rules;
     private GameFrame gameFrame;
-
 }
