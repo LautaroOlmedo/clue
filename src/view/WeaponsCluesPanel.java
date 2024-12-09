@@ -16,23 +16,14 @@ public class WeaponsCluesPanel extends JPanel {
     }
 
     public void setWeaponsClues(){
-        // Botón principal "Armas"
-       /* weaponsButton = new JButton("Armas");
-        weaponsButton.setBounds(350, 10, 200, 50);
-        this.add(weaponsButton);*/
-
-        // Botones de armas (con tamaño aumentado para imágenes)
         weaponOneButton = new JButton();
         weaponOneButton.setOpaque(false);
-       //weaponOneButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/weapons/candlestick.jpeg"));
         weaponOneButton.setContentAreaFilled(false);
         weaponOneButton.setBorderPainted(false);
-        weaponOneButton.setBounds(10, 80, 260, 350); // Primer botón
+        weaponOneButton.setBounds(10, 80, 260, 350);
         this.add(weaponOneButton);
 
         weaponTwoButton = new JButton();
-
-        //weaponTwoButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/weapons/carving-knife.jpeg"));
         weaponTwoButton.setOpaque(false);
         weaponTwoButton.setContentAreaFilled(false);
         weaponTwoButton.setBorderPainted(false);
@@ -40,7 +31,6 @@ public class WeaponsCluesPanel extends JPanel {
         this.add(weaponTwoButton);
 
         weaponThreeButton = new JButton();
-        //weaponThreeButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/weapons/gun.jpeg"));
         weaponThreeButton.setOpaque(false);
         weaponThreeButton.setContentAreaFilled(false);
         weaponThreeButton.setBorderPainted(false);

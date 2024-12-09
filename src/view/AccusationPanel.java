@@ -18,9 +18,6 @@ public class AccusationPanel extends JPanel {
     public void setAccusePanel() {
 
         accuseButton = new JButton("Acusar");
-        //accusedPlayerButton.setOpaque(false);
-        //accusedPlayerButton.setContentAreaFilled(false);
-        //accusedPlayerButton.setBorderPainted(false);
         accuseButton.setBounds(340, 620, 200, 50);
         this.add(accuseButton);
 

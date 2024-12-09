@@ -28,9 +28,6 @@ public class Player {
         return playerImage;
     }
 
-
-
-
     public ImageIcon createImage(String image) throws Exception{
         try {
             this.playerImage = new ImageIcon(image);

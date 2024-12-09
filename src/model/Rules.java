@@ -309,8 +309,6 @@ public class Rules {
         return null;
     }
 
-
-
     private User user;
     private Impostor impostor;
     private Crime crime;
@@ -318,9 +316,6 @@ public class Rules {
     private ArrayList<Weapon> weapons = new ArrayList<>();
     private ArrayList<Room> rooms = new ArrayList<>();
     private Clue clues = new Clue();
-    private int plays;
-    private final int maxPLays = 12;
     private int cluePage = 1;
-
 }
 
