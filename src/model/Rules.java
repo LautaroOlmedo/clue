@@ -59,7 +59,7 @@ public class Rules {
 
     public ArrayList<Room> createRooms(){
         try{
-            Room kitchen = new Room(1, "Kitchen", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg");
+            Room kitchen = new Room(1, "Kitchen", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/kitchen.png");
             Room diningRoom = new Room(2, "Dining Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/dining-room.jpeg");
             Room ballroom = new Room(3, "Ball Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/ball-room.jpeg");
             Room billiardRoom = new Room(4, "Billiard Room", "/home/lautaro/IdeaProjects/clue/src/model/images/rooms/billiard-room.jpeg");

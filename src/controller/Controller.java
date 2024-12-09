@@ -112,7 +112,7 @@ public class Controller implements ActionListener {
             this.rules.sumCluePage();
             this.gameFrame.switchToCluesPanel(this.rules.getCluePage());
         }
-        if (e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())) {
+        if (e.getSource().equals(this.gameFrame.getSidePanel().getInvestigateButton())) { // INVESTIGAR SALA
             boolean addedClue = false;
 
             do {
@@ -152,14 +152,12 @@ public class Controller implements ActionListener {
                         break;
                 }
             } while (!addedClue);
+            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
         }
 
         if(e.getSource().equals(this.gameFrame.getBoardPanel().getKitchenButton())){
 
-            if(!this.gameFrame.getSidePanel().getInvestigateButton().isEnabled()){
-                this.gameFrame.getSidePanel().getFirstTextArea().setText("");
-                this.gameFrame.getSidePanel().appendTextToFirstArea("Ya investigaste dos veces la cocina. Busca pistas en otras salas.");
-            }
             if(this.rules.areThereCluesLeftToAdd()){
                 if (this.rules.validateVisitRoom(1)){
 
@@ -178,29 +176,116 @@ public class Controller implements ActionListener {
 
             if(this.rules.areThereCluesLeftToAdd()){
                 if (this.rules.validateVisitRoom(2)){
+
                     this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
                     this.rules.investigateRoom(2);
-                    //this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
+                    this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
                 }
             }
 
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando el comedor...");
-            this.gameFrame.getSidePanel().appendTextToFirstArea("Chequeando debajo de la mesa...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("nvestigando debajo de la mesa...");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Buscando pistas..");
 
         }else if(e.getSource().equals(this.gameFrame.getBoardPanel().getBallRoomButtom())){
             if(this.rules.areThereCluesLeftToAdd()){
                 if (this.rules.validateVisitRoom(3)){
+
                     this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
                     this.rules.investigateRoom(3);
-                    //this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
+                    this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
                 }
             }
 
             this.gameFrame.getSidePanel().getFirstTextArea().setText("");
-            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando el la sala...");
-            this.gameFrame.getSidePanel().appendTextToFirstArea("Chequeando piano...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la sala...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("investigando detrás del piano...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Buscando pistas..");
+        }else if(e.getSource().equals(this.gameFrame.getBoardPanel().getBillardRoomButton())){
+            if(this.rules.areThereCluesLeftToAdd()){
+                if (this.rules.validateVisitRoom(4)){
+
+                    this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
+                    this.rules.investigateRoom(4);
+                    this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
+                }
+            }
+
+            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la sala de pool...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("chequeando estado de palos...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Buscando pistas..");
+
+        } else if (e.getSource().equals(this.gameFrame.getBoardPanel().getHallRoomButton())){
+            if(this.rules.areThereCluesLeftToAdd()){
+                if (this.rules.validateVisitRoom(5)){
+
+                    this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
+                    this.rules.investigateRoom(5);
+                    this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
+                }
+            }
+
+            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando el recibidor...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("buscando en abrigos...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Buscando pistas..");
+        } else if (e.getSource().equals(this.gameFrame.getBoardPanel().getLibraryRoomButton())){
+            if(this.rules.areThereCluesLeftToAdd()){
+                if (this.rules.validateVisitRoom(6)){
+
+                    this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
+                    this.rules.investigateRoom(6);
+                    this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
+                }
+            }
+
+            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando la librería...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("investigando libro de la libertad avanza...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Buscando pistas..");
+        } else if (e.getSource().equals(this.gameFrame.getBoardPanel().getLoungeRoomButtom())) {
+            if(this.rules.areThereCluesLeftToAdd()){
+                if (this.rules.validateVisitRoom(7)){
+
+                    this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
+                    this.rules.investigateRoom(7);
+                    this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
+                }
+            }
+
+            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando sala de estar..");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("revisando huellas...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Buscando pistas..");
+        } else if (e.getSource().equals(this.gameFrame.getBoardPanel().getStudyRoomButton())) {
+            if(this.rules.areThereCluesLeftToAdd()){
+                if (this.rules.validateVisitRoom(8)){
+
+                    this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
+                    this.rules.investigateRoom(8);
+                    this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
+                }
+            }
+
+            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando el estudio..");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("hackenado laptop...");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Buscando pistas..");
+        } else if (e.getSource().equals(this.gameFrame.getBoardPanel().getConservatoryButton())){
+            if(this.rules.areThereCluesLeftToAdd()){
+                if (this.rules.validateVisitRoom(9)){
+
+                    this.gameFrame.getSidePanel().getInvestigateButton().setEnabled(true);
+                    this.rules.investigateRoom(9);
+                    this.gameFrame.getSidePanel().appendTextToFirstArea("Encontraste una pista...");
+                }
+            }
+
+            this.gameFrame.getSidePanel().getFirstTextArea().setText("");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("Investigando salón..");
+            this.gameFrame.getSidePanel().appendTextToFirstArea("analizando cuadros...");
             this.gameFrame.getSidePanel().appendTextToFirstArea("Buscando pistas..");
         }
     }

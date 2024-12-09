@@ -38,7 +38,7 @@ public class Room {
     }
 
     public void investigate(){
-        System.out.println("visitas realizadas" + this.visitsMade);
+        System.out.println("visitas realizadas en la habitacion: "+ this.roomName + this.visitsMade);
         this.visitsMade++;
     }
     public int getVisitsMade() {

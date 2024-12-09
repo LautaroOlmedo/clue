@@ -237,7 +237,7 @@ public class AccusationPanel extends JPanel {
 
     public void setRoomAccused(){
         if (firstRoom.isSelected()){
-            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/library.jpeg"));
+            this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/kitchen.png"));
         } else if (secondRoom.isSelected()) {
             this.accusedRoomButton.setIcon(new ImageIcon("/home/lautaro/IdeaProjects/clue/src/model/images/rooms/dining-room.jpeg"));
         }else if (thirdRoom.isSelected()) {
