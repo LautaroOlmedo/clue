@@ -8,10 +8,10 @@ public class InitialPanel extends JPanel {
 
     public InitialPanel() {
         backgroundImage = new ImageIcon("/Users/lautaroolmedo/IdeaProjects/clue/src/view/images/clue-start-image.jpg").getImage();
-        startButton = new JButton("Start");
+        startButton = new JButton("Iniciar");
         startButton.setBackground(Color.DARK_GRAY);
         startButton.setPreferredSize(new Dimension(100, 50));
-        exitButton = new JButton("Exit");
+        exitButton = new JButton("Salir");
         exitButton.setBackground(Color.DARK_GRAY);
         exitButton.setPreferredSize(new Dimension(100, 50));
 
